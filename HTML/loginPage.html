@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ExpressCart/CSS/general.css">
+    <link rel="stylesheet" href="/ExpressCart/CSS/loginPage.css">
+    <script type="text/javascript" src="../../ExpressCart/JS/toggleLogin.js"></script>
+    <script src="../DB/APIroutes.js"></script>
+    <title>Log In</title>
+</head>
+<body>
+    <div class="mainWrapper">
+        <div class="leftSideDiv">
+            faw
+        </div>
+        <div class="rightSideDiv">
+            <form action="/login" method="post" id="frmLogin">
+                <h1 style="text-align: center; font-size: 40px;">SIGN IN</h1>
+                <input type="text" id="fUsername" name="fUsername" placeholder="Username..." required><br><br>
+                <input type="password" id="fPassword" name="fPassword" placeholder="Password..." required><br><br>
+                <p style="text-align: center;" id="pCreateAccount" onclick="loadRegister()">Create an Account</p>
+                <input type="submit" value="Sign In" id="btnSubmit">
+            </form>
+            <form action="/api/signup" method="post" id="frmSignUp">
+                <h1 style="text-align: center; font-size: 40px;">CREATE ACCOUNT</h1>
+                <input type="text" id="fUsername_Register" name="fUsername_Register" placeholder="Username..." required><br><br>
+                <input type="text" id="fEmail" name="fEmail" placeholder="Email..." required><br><br>
+                <input type="text" id="fPassword_Register" name="fPassword_Register" placeholder="Password..." required><br><br>
+                <p style="text-align: center;" id="pSignIn" onclick="loadSignIn()">Sign In</p>
+                <input type="submit" value="Create Account" id="btnSignUp">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
