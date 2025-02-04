@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <script>
+        console.log('Made it to top!');
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const userName = urlParams.get('userName');
+            if (userName) {
+                fetch(`api//getUserData?userName=${userName}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const infoContainer = document.getElementById('userPage');
+                        infoContainer.innerHTML = `
+                            <h2>User ID: ${data.id}</h2>
+                            <p>Name: ${data.username}</p>
+                            <p>Email: ${data.emailaddress}</p>
+                            <p>Date Joined: ${data.datejoined}</p>
+                        `;
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        }); 
+    </script>
+</head>
+<body>
+     <div id="userPage">
+     </div>
+     <h1>Hello world Lol</h1>
+</body>
+</html>
