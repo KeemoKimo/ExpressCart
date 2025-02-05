@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../pool');
 
+
 router.post('/signIn', (req, res) => {
     const query = `SELECT * FROM users WHERE username = '${req.body.fUsername}'
      AND password = '${req.body.fPassword}'`;
