@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ExpressCart/CSS/general.css">
+    <link rel="stylesheet" href="/ExpressCart/CSS/mainPage.css">
     <title>Main</title>
-    <script>
+    <!-- <script>
         console.log('Made it to top!');
         document.addEventListener('DOMContentLoaded', function () {
             const urlParams = new URLSearchParams(window.location.search);
@@ -24,17 +26,40 @@
                     .catch(error => console.error('Error:', error));
             }
         }); 
-    </script>
+    </script> -->
 </head>
 
 <body>
-    <div id="userPage">
+    <div id="navBar">
+        <h1 id="lblLogo">expressCart.</h1>
+        <div id="searchContainer">
+            <select name="categories" id="cmbCategories">
+                <option value="carsAndVehicle">Cars & Vehicles</option>
+                <option value="phonesAndTablet">Phones & Tablets</option>
+                <option value="computersAndAccessories">Computers & Accessories</option>
+                <option value="electronicsAndAppliances">Electronics & Appliances</option>
+                <option value="realEstate">Real Estate</option>
+                <option value="fashionAndBeauty">Fashion & Beauty</option>
+                <option value="furnitureAndDecor">Furniture & Decor</option>
+                <option value="books">Books</option>
+                <option value="sportsAndHobbies">Sports & Hobbies</option>
+                <option value="healthAndWellness">Health & Wellness</option>
+                <option value="allCategories" selected>All Categories</option>
+            </select>
+            <input type="text" placeholder="What are you looking for today ...." id="txtItems">
+        </div>
+        <button id="btnSell">Sell</button>
+        <img src="" alt="" id="imgProfile">
     </div>
-    <h1>Hello world Lol</h1>
-    <form action="/api/uploadProfileImg" method="post" enctype="multipart/form-data">
+    <div id="categoriesDiv">
+
+    </div>
+    <!-- <div id="userPage">
+    </div> -->
+    <!-- <form action="/api/uploadProfileImg" method="post" enctype="multipart/form-data">
         <input type="file" name="image" accept="image/*">
         <button type="submit">Upload</button>
-    </form>
+    </form> -->
 </body>
 
 </html>

@@ -1,0 +1,60 @@
+#navBar {
+    width: 100%;
+    background-color: red;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#categoriesDiv {
+    width: 70%;
+    height: 50%;
+    background-color: yellow;
+    margin: 10% auto;
+}
+
+#cmbCategories {
+    font-family: 'Poppins', sans-serif;
+    height: 40px;
+    width: 250px;
+}
+
+#txtItems {
+    font-family: 'Poppins', sans-serif;
+    height: 40px;
+    width: 400px;
+    border: 1px solid black;
+    padding-left: 20px;
+}
+
+#btnSell {
+    font-family: 'Poppins', sans-serif;
+    width: 150px;
+    height: 40px;
+}
+
+#btnSell:hover {
+    cursor: pointer;
+    transition: .5s;
+}
+
+#lblLogo {
+    user-select: none;
+    cursor: pointer;
+}
+
+#imgProfile {
+    float: right;
+    width: 70px;
+    background-color: yellow;
+    border-radius: 50%;
+}
+
+#searchContainer {
+    display: flex;
+    gap: 0px;
+    align-items: center;
+}

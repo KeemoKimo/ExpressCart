@@ -31,10 +31,10 @@ app.get('/', (req, res) => {
 app.get('/mainPage', (req, res) => {
     const filePath = path.resolve(__dirname, '..', '..', 'ExpressCart', 'HTML', 'mainPage.html');
     const userName = req.query.userName;
-    console.log(userName);
-    console.log("Current Working Directory:", process.cwd());
-    console.log("Cloudinary API Key:", process.env.CLOUDINARY_API_KEY);
-    console.log("Cloudinary API Secret:", process.env.CLOUDINARY_API_SECRET);
+    // console.log(userName);
+    // console.log("Current Working Directory:", process.cwd());
+    // console.log("Cloudinary API Key:", process.env.CLOUDINARY_API_KEY);
+    // console.log("Cloudinary API Secret:", process.env.CLOUDINARY_API_SECRET);
     res.sendFile(filePath, (err) => {
         if (err) {
             console.error('Error sending file:', err);
