@@ -2,7 +2,14 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f8f8f8;
+    background-color: #f0eded;
     margin: 0;
     padding: 0;
+}
+
+#divider{
+    background-color: black;
+    width: 85%;
+    height: 1px;
+    margin: 0 auto;
 }

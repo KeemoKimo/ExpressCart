@@ -1,6 +1,6 @@
 #navBar {
     width: 100%;
-    background-color: red;
+    background-color: white;
     overflow: hidden;
     position: fixed;
     top: 0;
@@ -12,8 +12,8 @@
 #categoriesDiv {
     width: 70%;
     height: 50%;
-    background-color: yellow;
     margin: 10% auto;
+    border-radius: 10px;
 }
 
 #cmbCategories {
@@ -34,11 +34,17 @@
     font-family: 'Poppins', sans-serif;
     width: 150px;
     height: 40px;
+    background-color: rgb(25, 194, 25);
+    border: none;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
 }
 
 #btnSell:hover {
     cursor: pointer;
     transition: .5s;
+    transform: scale(1.01);
 }
 
 #lblLogo {
@@ -49,12 +55,60 @@
 #imgProfile {
     float: right;
     width: 70px;
-    background-color: yellow;
+    background-color: #f0eded;
     border-radius: 50%;
+}
+
+#imgProfile:hover{
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: 0.5s;
 }
 
 #searchContainer {
     display: flex;
     gap: 0px;
     align-items: center;
+}
+
+#topCategoryDiv{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px 10px 0 0;
+}
+
+#bottomCategoryDiv{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border-radius: 0 0 10px 10px;
+}
+
+.categoryBlock{
+    width: 20%;
+    height: 100%;
+    border: 1px solid black;
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+}
+
+.imgCategory{
+    margin-top: 10%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit:fill;
+    background-color: #f0eded;
+}
+
+.imgCategory:hover{
+    cursor: pointer;
+    transition: .5s;
+    transform: scale(1.05);
 }
