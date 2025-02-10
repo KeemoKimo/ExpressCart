@@ -12,7 +12,7 @@ router.post('/sellItem', (req, res) => {
             res.status(500).send('An error occured while selling your item');
         } else {
                 console.log("Item sell posted successfully");
-                //res.redirect(`/mainPage?userName=${req.body.fUsername}`);
+                res.redirect(`/mainPage?userName=${req.body.lblUserName}`);
         }
     });
 });

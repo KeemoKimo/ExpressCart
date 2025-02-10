@@ -16,7 +16,9 @@
                     .then(response => response.json())
                     .then(data => {
                         const userIdContainer = document.getElementById('lblUserId');
-                        userIdContainer.value = data.id;
+                        userIdContainer.value = data.id;  
+                        const userNameContainer = document.getElementById('lblUserName');
+                        userNameContainer.value = data.username;
                     })
                     .catch(error => console.error('Error:', error));
             }
@@ -27,6 +29,7 @@
 <body>
     <form action="/api/sellItem" id="frmSellItem" method="post">
         <input type="hidden" name="lblUserId" id="lblUserId">
+        <input type="hidden" name="lblUserName" id="lblUserName">
         <input type="text" id="txtName" name="txtName" placeholder="Enter item name ..." class="txtField" required><br>
         <input type="text" id="txtLocation" name="txtLocation" placeholder="Enter item location ..." class="txtField" required><br>
         <input type="number" id="txtPrice" name="txtPrice" placeholder="Enter selling price ..." min="0.00" step="0.01"
