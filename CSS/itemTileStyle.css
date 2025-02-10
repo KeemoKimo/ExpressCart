@@ -1,0 +1,81 @@
+.itemContainer{
+    width: 90%;
+    height: 500px;
+    background-color: red;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.itemTile{
+    width: 18%;
+    height: 500px;
+    background-color: yellow;
+    border-radius: 10px;
+}
+
+.itemTile img{
+    width: 100%;
+    height: 340px;
+    background-color: blue;
+    border-radius: 10px 10px 0 0;
+}
+
+.lblItemTitle{
+    font-size: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.lblLocation{
+    margin-top: -12px;
+    font-size: 16px;
+    margin-left: 15px;
+    margin-right: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.lblDatePosted{
+    margin-top: -12px;
+    font-size: 16px;
+    margin-left: 15px;
+    margin-right: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.lblItemPrice{
+    font-size: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: red;
+    font-weight: bold;
+    float: left;
+}
+
+.lblItemCondition{
+    font-size: 20px;
+    margin-right: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: red;
+    font-weight: bold;
+    float: right;
+}
+
+.itemTile_bottom{
+    margin-top: -30px;
+    width: 100%;
+    background-color: green;
+}

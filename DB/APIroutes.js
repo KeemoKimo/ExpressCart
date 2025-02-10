@@ -44,6 +44,7 @@ const signInRoute = require('../DB/Routes/signIn');
 const getuserDataRoute = require('../DB//Routes/getuserData');
 const uploadImage = require('../DB/Routes/cloudinary');
 const sellItem = require('../DB/Routes/sellItem');
+const getItemData = require('../DB/Routes/getItemData');
 
 // Use routes
 app.use('/api', signUpRoute);
@@ -51,6 +52,7 @@ app.use('/api', signInRoute);
 app.use('/api', getuserDataRoute);
 app.use('/api', uploadImage);
 app.use('/api', sellItem);
+app.use('/api', getItemData);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

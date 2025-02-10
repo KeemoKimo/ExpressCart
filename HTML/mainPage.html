@@ -5,28 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/ExpressCart/CSS/general.css">
     <link rel="stylesheet" href="/ExpressCart/CSS/mainPage.css">
+    <link rel="stylesheet" href="/ExpressCart/CSS/itemTileStyle.css">
     <title>Main</title>
-    <!-- <script>
-        console.log('Made it to top!');
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            const userName = urlParams.get('userName');
-            if (userName) {
-                fetch(`api//getUserData?userName=${userName}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        const infoContainer = document.getElementById('userPage');
-                        infoContainer.innerHTML = `
-                            <h2>User ID: ${data.id}</h2>
-                            <p>Name: ${data.username}</p>
-                            <p>Email: ${data.emailaddress}</p>
-                            <p>Date Joined: ${data.datejoined}</p>
-                        `;
-                    })
-                    .catch(error => console.error('Error:', error));
-            }
+            console.log('Retrieving data');
+            fetch(`api/getItemData`)
+                .then(response => response.json())
+                .then(data => {
+                    const yourItemsContainer = document.getElementById('yourItemsContainer');
+                    yourItemsContainer.innerHTML = "";
+
+                    data.slice(0, 5).forEach(data => {
+                        const itemTile = `
+                    <div class="itemTile">
+                        <img src="${data.image_url}" alt="Item Image">
+                        <div class="itemTile_lowerDesc">
+                            <p class="lblItemTitle">${data.name}</p>
+                            <p class="lblLocation">${data.location}</p>
+                            <p class="lblDatePosted">${new Date(data.dateposted).toLocaleDateString()}</p>
+                            <div class="itemTile_bottom">
+                                <p class="lblItemPrice">$${data.price}</p>
+                                <p class="lblItemCondition">${data.condition.toUpperCase()}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                        yourItemsContainer.innerHTML += itemTile;
+                    });
+                })
+                .catch(error => console.error('Error:', error));
         }); 
-    </script> -->
+    </script>
 </head>
 
 <body>
@@ -97,22 +107,37 @@
             </div>
         </div>
     </div>
+    <h1 id="lblYourItems">Your Items</h1>
+    <div class="itemContainer" id="yourItemsContainer">
+        <!-- <div class="itemTile">
+            <img src="" alt="">
+            <div class="itemTile_lowerDesc">
+                <p class="lblItemTitle">2023 Land Cruiser offroad GRX</p>
+                <p class="lblLocation">Phnom Penh, Cambodia</p>
+                <p class="lblDatePosted">01 - 12 - 2024</p>
+                <div class="itemTile_bottom">
+                    <p class="lblItemPrice">$55,000</p>
+                    <p class="lblItemCondition">New</p>
+                </div>
+            </div>
+        </div> -->
+    </div>
     <div id="divider">
-
     </div>
     <!-- <div id="userPage">
     </div> -->
-    <form action="/api/uploadImage" method="post" enctype="multipart/form-data">
+    <form action="/api/uploadImage" method="post" enctype="multipart/form-data" style="display: none;">
         <input type="file" name="image" accept="image/*">
         <button type="submit">Upload</button>
     </form>
 </body>
 <script>
-    function openSellItemPage(){
+    function openSellItemPage() {
         const queryString = window.location.search
         const urlParams = new URLSearchParams(queryString)
         const userName = urlParams.get('userName')
         window.location.href = "addItemPage.html?userName=" + userName;
     }
 </script>
+
 </html>
