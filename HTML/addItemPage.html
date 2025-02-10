@@ -1,0 +1,59 @@
+<html lang=vn "en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Item</title>
+    <link rel="stylesheet" href="/ExpressCart/CSS/general.css">
+    <link rel="stylesheet" href="/ExpressCart/CSS/addItemPage.css">
+    <script src="../DB/APIroutes.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const userName = urlParams.get('userName');
+            if (userName) {
+                fetch(`api//getUserData?userName=${userName}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const userIdContainer = document.getElementById('lblUserId');
+                        userIdContainer.value = data.id;
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        }); 
+    </script>
+</head>
+
+<body>
+    <form action="/api/sellItem" id="frmSellItem" method="post">
+        <input type="hidden" name="lblUserId" id="lblUserId">
+        <input type="text" id="txtName" name="txtName" placeholder="Enter item name ..." class="txtField" required><br>
+        <input type="text" id="txtLocation" name="txtLocation" placeholder="Enter item location ..." class="txtField" required><br>
+        <input type="number" id="txtPrice" name="txtPrice" placeholder="Enter selling price ..." min="0.00" step="0.01"
+            class="txtField" required>
+        <label for="txtPrice" id="lblPrice" class="labelStyle">CAD $</label><br>
+        <label for="categories" id="lblCategory" class="labelStyle">Category : </label>
+        <select name="categories" id="cmbCategories" class="cmbSelect" required>
+            <option value="carsAndVehicle">Cars & Vehicles</option>
+            <option value="phonesAndTablet">Phones & Tablets</option>
+            <option value="computersAndAccessories">Computers & Accessories</option>
+            <option value="electronicsAndAppliances">Electronics & Appliances</option>
+            <option value="realEstate">Real Estate</option>
+            <option value="fashionAndBeauty">Fashion & Beauty</option>
+            <option value="furnitureAndDecor">Furniture & Decor</option>
+            <option value="books">Books</option>
+            <option value="sportsAndHobbies">Sports & Hobbies</option>
+            <option value="healthAndWellness">Health & Wellness</option>
+        </select><br>
+        <label for="conditions" id="lblCondition" class="labelStyle">Condition : </label>
+        <select name="conditions" id="cmbConditions" class="cmbSelect" required>
+            <option value="new">New</option>
+            <option value="used">Used</option>
+        </select><br>
+        <textarea name="txtDescription" id="txtDescription" placeholder="Enter Item Description ..."
+            required></textarea><br>
+        <input type="submit" id="btnSellItem" value="Sell Item">
+    </form>
+</body>
+
+</html>

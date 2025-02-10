@@ -48,7 +48,7 @@
             </select>
             <input type="text" placeholder="What are you looking for today ...." id="txtItems">
         </div>
-        <button id="btnSell">Sell</button>     
+        <button id="btnSell" onclick="openSellItemPage()">Sell</button>
         <img src="https://cdn-icons-png.flaticon.com/512/4263/4263296.png" alt="" id="imgProfile">
     </div>
     <div id="categoriesDiv">
@@ -98,14 +98,21 @@
         </div>
     </div>
     <div id="divider">
-        
+
     </div>
     <!-- <div id="userPage">
     </div> -->
-    <!-- <form action="/api/uploadProfileImg" method="post" enctype="multipart/form-data">
+    <form action="/api/uploadImage" method="post" enctype="multipart/form-data">
         <input type="file" name="image" accept="image/*">
         <button type="submit">Upload</button>
-    </form> -->
+    </form>
 </body>
-
+<script>
+    function openSellItemPage(){
+        const queryString = window.location.search
+        const urlParams = new URLSearchParams(queryString)
+        const userName = urlParams.get('userName')
+        window.location.href = "addItemPage.html?userName=" + userName;
+    }
+</script>
 </html>

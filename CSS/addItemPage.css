@@ -1,0 +1,79 @@
+#frmSellItem {
+    background-color: #f0eded;
+    text-align: center;
+    padding: 50px 100px;
+}
+
+.txtField {
+    margin-top: 50px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 600px;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#txtPrice {
+    margin-top: 50px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 510px;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.labelStyle {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.cmbSelect {
+    width: 450px;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 40px;
+    margin-left: 50px;
+}
+
+#txtDescription {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 1200px;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    border-radius: 5px;
+    height: 500px;
+}
+
+#btnSellItem {
+    width: 200px;
+    height: 50px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#btnSellItem:hover {
+    cursor: pointer;
+    transition: .4s;
+    transform: scale(1.02);
+    cursor: pointer;
+    background-color: rgb(0, 115, 255);
+    color: white;
+}

@@ -16,7 +16,7 @@ cloudinary.config({
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-router.post('/uploadProfileImg', upload.single('image'), (req, res) => {
+router.post('/uploadImage', upload.single('image'), (req, res) => {
     if (!req.file) {
         return res.status(400).json({ error: 'No file uploaded' });
     }
@@ -26,7 +26,8 @@ router.post('/uploadProfileImg', upload.single('image'), (req, res) => {
             console.log(error);
             return res.status(500).json({ error: 'Error uploading to Cloudinary' });
         }
-        res.json({ public_id: result.public_id, url: result.secure_url });
+
+        // res.json({ public_id: result.public_id, url: result.secure_url });
     }).end(req.file.buffer);
 });
 
