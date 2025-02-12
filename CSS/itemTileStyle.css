@@ -9,11 +9,35 @@
     gap: 20px;
 }
 
+.fullWidthContainer{
+    width: 100%;
+    height: 500px;
+    background-color: red;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 50px;
+}
+
+#allItemContainer{
+    width: 90%;
+    height: auto;
+    background-color: blue; 
+    margin: 50px auto;
+}
+
 .itemTile{
     width: 18%;
     height: 500px;
     background-color: yellow;
     border-radius: 10px;
+}
+
+.itemTile:hover{
+    cursor: pointer;
+    transition: .3s;
+    transform: scale(1.01);
 }
 
 .itemTile img{
