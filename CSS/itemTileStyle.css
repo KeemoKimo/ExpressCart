@@ -5,7 +5,8 @@
     margin: 50px auto;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 20px;
 }
 
 .itemTile{
@@ -13,6 +14,10 @@
     height: 500px;
     background-color: yellow;
     border-radius: 10px;
+}
+
+.itemTile img{
+    object-fit: cover;
 }
 
 .itemTile img{

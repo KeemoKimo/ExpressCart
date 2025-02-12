@@ -10,7 +10,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             console.log('Retrieving data');
-            fetch(`api/getItemData`)
+            const urlParams = new URLSearchParams(window.location.search);
+            var userName = urlParams.get('userName');
+            fetch(`api/getItemData?userName=${encodeURIComponent(userName)}`)
                 .then(response => response.json())
                 .then(data => {
                     const yourItemsContainer = document.getElementById('yourItemsContainer');
@@ -19,7 +21,7 @@
                     data.slice(0, 5).forEach(data => {
                         const itemTile = `
                     <div class="itemTile">
-                        <img src="${data.image_url}" alt="Item Image">
+                        <img src="${data.image_url || 'https://res.cloudinary.com/dkgfcemw4/image/upload/v1739280006/no-photo-or-blank-image-icon.jpg'}" alt="Item Image">
                         <div class="itemTile_lowerDesc">
                             <p class="lblItemTitle">${data.name}</p>
                             <p class="lblLocation">${data.location}</p>
