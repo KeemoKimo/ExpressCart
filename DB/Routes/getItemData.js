@@ -17,8 +17,18 @@ router.get('/getItemData', async (req, res) => {
         let params = [];
 
         if (userName) {
-            query += ` INNER JOIN users ON items.ownerid = users.id WHERE users.username = $1`;
-            params.push(userName);
+            let userIdQuery = `SELECT * FROM users WHERE username = $1`;
+            let userIdResult = await pool.query(userIdQuery, [userName]);
+
+            if(userIdResult.rowCount === 0){
+                return res.status(404).json({ message: "No user ID foud" });
+            }
+
+            let userId = userIdResult.rows[0].id;
+
+            query += ` WHERE items.ownerid = $1`;
+
+            params.push(userId);
         }
 
         query += ` ORDER BY items.dateposted DESC`;

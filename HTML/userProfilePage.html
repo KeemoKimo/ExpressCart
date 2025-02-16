@@ -1,0 +1,69 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/ExpressCart/CSS/general.css">
+    <link rel="stylesheet" href="/ExpressCart/CSS/userProfilePage.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            var userName = urlParams.get('userName');
+            fetch(`api/getUserData?userName=${encodeURIComponent(userName)}`)
+                .then(response => response.json())
+                .then(data => {
+                    const labelUsername = document.getElementById("lblUserName");
+                    labelUsername.innerHTML = data.username;
+                    const labelMemberSince = document.getElementById("lblMemberSince");
+                    labelMemberSince.innerHTML = "Member Since : <b>" + new Date(data.datejoined).toLocaleDateString('en-GB') + "</b>";
+                });
+        });
+    </script>
+</head>
+
+<body>
+    <h1 id="lblUserName"></h1>
+    <p id="lblMemberSince"></p>
+    <div id="divider"></div>
+
+    <div class="userSettingButton" id="btnViewYourItems">
+        <div class="buttonAndTextWrapper">
+            <img src="https://cdn-icons-png.flaticon.com/512/962/962669.png" alt="" class="imgSettingButton">
+            <h1 class="lblSettingOption">View Your Posted Items</h1>
+        </div>
+    </div>
+ 
+    <div class="userSettingButton" id="btnViewCart">
+        <div class="buttonAndTextWrapper">
+            <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="" class="imgSettingButton">
+            <h1 class="lblSettingOption">View Your Cart</h1>
+        </div>
+    </div>
+
+    <div class="userSettingButton" id="btnChangePassword">
+        <div class="buttonAndTextWrapper">
+            <img src="https://cdn-icons-png.flaticon.com/512/4543/4543404.png" alt="" class="imgSettingButton">
+            <h1 class="lblSettingOption">Change Password</h1>
+        </div>
+    </div>
+
+    <div id="divider"></div>
+
+    <div class="userSettingButton" id="btnSignOut" onclick="signOut()">
+        <div class="buttonAndTextWrapper">
+            <img src="https://cdn-icons-png.flaticon.com/512/4263/4263209.png" alt="" class="imgSettingButton">
+            <h1 class="lblSettingOption">Sign Out</h1>
+        </div>
+    </div>
+
+</body>
+<script>
+    function signOut(){
+        window.location.href= "loginPage.html";
+    }
+
+    function changePassword(){
+
+    }
+</script>

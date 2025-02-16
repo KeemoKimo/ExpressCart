@@ -25,9 +25,9 @@
                         <div class="itemTile_lowerDesc">
                             <p class="lblItemTitle">${data.name}</p>
                             <p class="lblLocation">${data.location}</p>
-                            <p class="lblDatePosted">${new Date(data.dateposted).toLocaleDateString()}</p>
+                            <p class="lblDatePosted">${new Date(data.dateposted).toLocaleDateString('en-GB')}</p>
                             <div class="itemTile_bottom">
-                                <p class="lblItemPrice">$${data.price}</p>
+                                <p class="lblItemPrice">$${Number(data.price).toLocaleString()}</p>
                                 <p class="lblItemCondition">${data.condition.toUpperCase()}</p>
                             </div>
                         </div>
@@ -58,9 +58,9 @@
                         <div class="itemTile_lowerDesc">
                             <p class="lblItemTitle">${data.name}</p>
                             <p class="lblLocation">${data.location}</p>
-                            <p class="lblDatePosted">${new Date(data.dateposted).toLocaleDateString()}</p>
+                            <p class="lblDatePosted">${new Date(data.dateposted).toLocaleDateString('en-GB')}</p>
                             <div class="itemTile_bottom">
-                                <p class="lblItemPrice">$${data.price}</p>
+                                <p class="lblItemPrice">$${Number(data.price).toLocaleString()}</p>
                                 <p class="lblItemCondition">${data.condition.toUpperCase()}</p>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
             <input type="text" placeholder="What are you looking for today ...." id="txtItems">
         </div>
         <button id="btnSell" onclick="openSellItemPage()">Sell</button>
-        <img src="https://cdn-icons-png.flaticon.com/512/4263/4263296.png" alt="" id="imgProfile">
+        <img src="https://cdn-icons-png.flaticon.com/512/4263/4263296.png" alt="" id="imgProfile" onclick="openUserProfilePage()">
     </div>
     <div id="categoriesDiv">
         <div id="topCategoryDiv">
@@ -152,19 +152,27 @@
 
     <div id="allItemContainer">
     </div>
-    <!-- <div id="userPage">
-    </div> -->
     <form action="/api/uploadImage" method="post" enctype="multipart/form-data" style="display: none;">
         <input type="file" name="image" accept="image/*">
         <button type="submit">Upload</button>
     </form>
+    <div id="bottomButtonWrapper">
+        <button id="btnViewAll">View All Items</button>
+    </div>
 </body>
+<footer>
+    <h2><b>Express Cart</b> developed and maintained by Bunthong Kong ©</h2>
+</footer>
 <script>
+    const queryString = window.location.search
+    const urlParams = new URLSearchParams(queryString)
+    const userName = urlParams.get('userName')
     function openSellItemPage() {
-        const queryString = window.location.search
-        const urlParams = new URLSearchParams(queryString)
-        const userName = urlParams.get('userName')
         window.location.href = "addItemPage.html?userName=" + userName;
+    }
+
+    function openUserProfilePage(){
+        window.location.href = "userProfilePage.html?userName=" + userName;
     }
 </script>
 

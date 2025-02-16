@@ -4,8 +4,7 @@ const pool = require('../pool');
 
 router.get('/getUserData', (req, res) => {
     const userName = req.query.userName;
-    console.log('Fetching data for:', userName);
-
+    
     const query = `SELECT * FROM users WHERE username = $1`;
 
     pool.query(query, [userName], (error, result) => {

@@ -1,0 +1,71 @@
+body{
+    text-align: center;
+}
+
+#lblUserName{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#lblMemberSince{
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.userSettingButton{
+    margin: 50px auto;
+    width: 80%;
+    border: none;
+    border-radius: 5px;
+    height: 100px;
+    font-size: 15px;
+}
+
+.imgSettingButton{
+    width: 80px;
+    height: 80px;
+    margin-top: 8px;
+}
+
+.buttonAndTextWrapper{
+    width: 500px;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    margin: 0 auto;
+    user-select: none;
+}
+
+.lblSettingOption{
+    margin-left: 20px;
+    margin-top: 25px;
+}
+
+.userSettingButton:hover{
+    cursor: pointer;
+    transform: scale(1.01);
+    transition: .5s;
+    opacity: 80%;
+}
+
+#btnViewCart{
+    background-color: rgb(8, 169, 8);
+    color: white;
+}
+
+#btnChangePassword{
+    background-color: rgb(216, 185, 6);
+    color: white;
+}
+
+#btnSignOut{
+    background-color: rgb(211, 4, 4);
+    color: white;
+}
+
+#btnViewYourItems{
+    background-color: rgb(68, 0, 255);
+    color: white;
+}
