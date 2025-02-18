@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Posted Items</title>
+    <link rel="stylesheet" href="/ExpressCart/CSS/general.css">
+    <link rel="stylesheet" href="/ExpressCart/CSS/itemTileStyle.css">
+    <link rel="stylesheet" href="/ExpressCart/CSS/yourPostedItems.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            const urlParams = new URLSearchParams(window.location.search);
+            var userName = urlParams.get('userName');
+
+            fetch(`api/getUserItemsData?userName=${encodeURIComponent(userName)}`)
+            .then(response => response.json())
+            .then(data => {
+                const labelTotalItem = document.getElementById("lblTotalItems");
+                labelTotalItem.innerHTML = `Your Item Count : ${data.totalItems}`;
+
+                const labelTotalValue = document.getElementById("lblTotalValue");
+                labelTotalValue.innerHTML = `Items combined value : ${data.totalValue}`;
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Summary of all your Items</h1>
+    <p id="lblTotalItems"></p>
+    <p id="lblTotalValue"></p>
+    <div id="divider"></div>
+    <h1>Hello World</h1>
+</body>
+</html>

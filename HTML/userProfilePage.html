@@ -27,21 +27,21 @@
     <p id="lblMemberSince"></p>
     <div id="divider"></div>
 
-    <div class="userSettingButton" id="btnViewYourItems">
+    <div class="userSettingButton" id="btnViewYourItems" onclick="viewYourItems()">
         <div class="buttonAndTextWrapper">
             <img src="https://cdn-icons-png.flaticon.com/512/962/962669.png" alt="" class="imgSettingButton">
             <h1 class="lblSettingOption">View Your Posted Items</h1>
         </div>
     </div>
  
-    <div class="userSettingButton" id="btnViewCart">
+    <div class="userSettingButton" id="btnViewCart" onclick="viewCart()">
         <div class="buttonAndTextWrapper">
             <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="" class="imgSettingButton">
             <h1 class="lblSettingOption">View Your Cart</h1>
         </div>
     </div>
 
-    <div class="userSettingButton" id="btnChangePassword">
+    <div class="userSettingButton" id="btnChangePassword" onclick="changePassword()">
         <div class="buttonAndTextWrapper">
             <img src="https://cdn-icons-png.flaticon.com/512/4543/4543404.png" alt="" class="imgSettingButton">
             <h1 class="lblSettingOption">Change Password</h1>
@@ -59,6 +59,10 @@
 
 </body>
 <script>
+    const queryString = window.location.search
+    const urlParams = new URLSearchParams(queryString)
+    const userName = urlParams.get('userName')
+
     function signOut(){
         window.location.href= "loginPage.html";
     }
@@ -66,4 +70,13 @@
     function changePassword(){
 
     }
+
+    function viewCart(){
+
+    }
+
+    function viewYourItems(){
+        window.location.href = `yourPostedItems.html?userName=${encodeURIComponent(userName)}`;
+    }
+    
 </script>
