@@ -1,20 +1,20 @@
-body{
+body {
     text-align: center;
 }
 
-#lblUserName{
+#lblUserName {
     text-align: center;
     margin-top: 50px;
     margin-bottom: 50px;
 }
 
-#lblMemberSince{
+#lblMemberSince {
     font-size: 18px;
     text-align: center;
     margin-bottom: 50px;
 }
 
-.userSettingButton{
+.userSettingButton {
     margin: 50px auto;
     width: 80%;
     border: none;
@@ -23,13 +23,13 @@ body{
     font-size: 15px;
 }
 
-.imgSettingButton{
+.imgSettingButton {
     width: 80px;
     height: 80px;
     margin-top: 8px;
 }
 
-.buttonAndTextWrapper{
+.buttonAndTextWrapper {
     width: 500px;
     display: flex;
     height: 100%;
@@ -38,34 +38,81 @@ body{
     user-select: none;
 }
 
-.lblSettingOption{
+.lblSettingOption {
     margin-left: 20px;
     margin-top: 25px;
 }
 
-.userSettingButton:hover{
+.userSettingButton:hover {
     cursor: pointer;
     transform: scale(1.01);
     transition: .5s;
     opacity: 80%;
 }
 
-#btnViewCart{
-    background-color: rgb(8, 169, 8);
-    color: white;
+#changePasswordCover {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-#btnChangePassword{
+#fNewPassword{
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    width: 300px;
+    margin-left: 20px;
+    padding: 5px;
+}
+
+#btnSubmit{
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 40px 10px 40px;
+    font-size: 20px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+#btnSubmit:hover{
+    transform: scale(1.01);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+#changePasswordForm {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 40px 30px 40px 30px;
+    border: 1px solid #888;
+    width: 30%;
+    border-radius: 15px;
+}
+
+#btnViewCart {
+    background-color: rgb(8, 169, 8);
+    color: white;
+    margin-top: 30px;
+}
+
+#btnChangePassword {
     background-color: rgb(216, 185, 6);
     color: white;
 }
 
-#btnSignOut{
+#btnSignOut {
     background-color: rgb(211, 4, 4);
     color: white;
 }
 
-#btnViewYourItems{
+#btnViewYourItems {
     background-color: rgb(68, 0, 255);
     color: white;
 }

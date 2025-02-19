@@ -18,6 +18,9 @@
                     const labelMemberSince = document.getElementById("lblMemberSince");
                     labelMemberSince.innerHTML = "Member Since : <b>" + new Date(data.datejoined).toLocaleDateString('en-GB') + "</b>";
                 });
+
+                document.getElementById("passwordChangeContent").action = `/api/changePassword?userName=${userName}`;
+
         });
     </script>
 </head>
@@ -33,7 +36,7 @@
             <h1 class="lblSettingOption">View Your Posted Items</h1>
         </div>
     </div>
- 
+
     <div class="userSettingButton" id="btnViewCart" onclick="viewCart()">
         <div class="buttonAndTextWrapper">
             <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="" class="imgSettingButton">
@@ -57,26 +60,41 @@
         </div>
     </div>
 
+    <div id="changePasswordCover">
+        <div id="changePasswordForm">
+            <form id="passwordChangeContent" method="post">
+                <label for="fNewPassword" style="font-size: 18px;">New Password: </label>
+                <input type="text" id="fNewPassword" name="fNewPassword"><br><br>
+                <input type="submit" value="Change Password" id="btnSubmit">
+            </form>
+        </div>
+    </div>
+
 </body>
 <script>
     const queryString = window.location.search
     const urlParams = new URLSearchParams(queryString)
     const userName = urlParams.get('userName')
 
-    function signOut(){
-        window.location.href= "loginPage.html";
+    function signOut() {
+        window.location.href = "loginPage.html";
     }
 
-    function changePassword(){
+    function changePassword() {
+        document.getElementById("changePasswordCover").style.display = "block"
+    }
+
+    window.onclick = function (event) {
+        if (event.target == document.getElementById("changePasswordCover")) {
+            document.getElementById("changePasswordCover").style.display = "none";
+        }
+    }
+
+    function viewCart() {
 
     }
 
-    function viewCart(){
-
-    }
-
-    function viewYourItems(){
+    function viewYourItems() {
         window.location.href = `yourPostedItems.html?userName=${encodeURIComponent(userName)}`;
     }
-    
 </script>
