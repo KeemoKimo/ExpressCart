@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,27 +8,63 @@
     <link rel="stylesheet" href="/ExpressCart/CSS/itemTileStyle.css">
     <link rel="stylesheet" href="/ExpressCart/CSS/yourPostedItems.css">
     <script>
-        document.addEventListener('DOMContentLoaded', function(){
+        document.addEventListener('DOMContentLoaded', function () {
             const urlParams = new URLSearchParams(window.location.search);
             var userName = urlParams.get('userName');
 
             fetch(`api/getUserItemsData?userName=${encodeURIComponent(userName)}`)
-            .then(response => response.json())
-            .then(data => {
-                const labelTotalItem = document.getElementById("lblTotalItems");
-                labelTotalItem.innerHTML = `Your Item Count : ${data.totalItems}`;
+                .then(response => response.json())
+                .then(data => {
+                    const labelTotalItem = document.getElementById("lblTotalItems");
+                    labelTotalItem.innerHTML = `Your Item Count : <span id="spanPrice"><b>${data.totalItems}</b></span>`;
 
-                const labelTotalValue = document.getElementById("lblTotalValue");
-                labelTotalValue.innerHTML = `Items combined value : ${data.totalValue}`;
-            });
+                    const labelTotalValue = document.getElementById("lblTotalValue");
+                    labelTotalValue.innerHTML = `Items Combined Value : <span id="spanPrice"><b>$${Number(data.totalValue).toLocaleString()} CAD</b></span>`;
+                });
+
+            fetch(`api/getItemData?userName=${encodeURIComponent(userName)}`)
+                .then(response => response.json())
+                .then(data => {
+                    const allItemContainer = document.getElementById("allItemContainer");
+                    allItemContainer.innerHTML = "";
+
+                    data.slice(0, 100).forEach((data, index) => {
+
+                        if (index % 5 == 0) {
+                            largeItemHolder = document.createElement('div');
+                            largeItemHolder.classList.add('fullWidthContainer');
+                            allItemContainer.appendChild(largeItemHolder);
+                        }
+
+                        const itemTile = `
+                        <div class="itemTile">
+                        <img src="${data.image_url || 'https://res.cloudinary.com/dkgfcemw4/image/upload/v1739280006/no-photo-or-blank-image-icon.jpg'}" alt="Item Image">
+                        <div class="itemTile_lowerDesc">
+                            <p class="lblItemTitle">${data.name}</p>
+                            <p class="lblLocation">${data.location}</p>
+                            <p class="lblDatePosted">${new Date(data.dateposted).toLocaleDateString('en-GB')}</p>
+                            <div class="itemTile_bottom">
+                                <p class="lblItemPrice">$${Number(data.price).toLocaleString()}</p>
+                                <p class="lblItemCondition">${data.condition.toUpperCase()}</p>
+                            </div>
+                        </div>
+                        </div>
+                        `;
+
+                        largeItemHolder.innerHTML += itemTile;
+                    });
+                });
         });
     </script>
 </head>
+
 <body>
-    <h1>Summary of all your Items</h1>
-    <p id="lblTotalItems"></p>
-    <p id="lblTotalValue"></p>
+    <h1 style="margin-top: 50px;" class="labelStyle">Summary of all your Items</h1>
+    <p id="lblTotalItems" class="labelStyle"></p>
+    <p id="lblTotalValue" class="labelStyle"></p>
     <div id="divider"></div>
-    <h1>Hello World</h1>
+    <div id="allItemContainer">
+    </div>
 </body>
+
 </html>
