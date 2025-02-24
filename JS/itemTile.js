@@ -1,3 +1,7 @@
+function openItem(idIn){
+    alert(idIn);
+}
+
 document.addEventListener('DOMContentLoaded', function(){
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -15,11 +19,11 @@ document.addEventListener('DOMContentLoaded', function(){
                         data.slice(0, limit).forEach(item => {
                             yourItemsContainer.innerHTML += createItemTile(item);
                         });
-                    }
+                    } 
 
-                    else{
-                        const allItemContainer = document.getElementById('allItemContainer'); // Define it
-                        allItemContainer.innerHTML = ""; // Clear before adding items
+                    else{ 
+                        const allItemContainer = document.getElementById('allItemContainer');
+                        allItemContainer.innerHTML = "";
                         let largeItemHolder;
                         data.slice(0, limit).forEach((item, index) => {
                             if(index % 5 === 0){
@@ -57,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     function createItemTile(data) {
         return `
-            <div class="itemTile">
+            <div class="itemTile" onclick="openItem(${data.id})">
                 <img src="${data.image_url || 'https://res.cloudinary.com/dkgfcemw4/image/upload/v1739280006/no-photo-or-blank-image-icon.jpg'}" alt="Item Image">
                 <div class="itemTile_lowerDesc">
                     <p class="lblItemTitle">${data.name}</p>
