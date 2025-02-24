@@ -10,8 +10,11 @@ const port = 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '../')));
+app.use('/JS', express.static(path.join(__dirname, '../JS')));
 app.use(express.static(path.join(__dirname, '..', '..', 'ExpressCart', 'HTML')));
 app.use(express.static(path.join(__dirname, '..', '..', 'ExpressCart', 'CSS')));
+app.use(express.static(path.join(__dirname, '..', '..', 'ExpressCart', 'JS')));
 app.use(express.json());
 
 

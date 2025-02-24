@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/ExpressCart/CSS/itemTileStyle.css">
     <link rel="stylesheet" href="/ExpressCart/CSS/yourPostedItems.css">
     <script src="../JS/yourPostedItems.js"></script>
+    <script src="/JS/itemTile.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const urlParams = new URLSearchParams(window.location.search);
@@ -23,38 +24,40 @@
                     labelTotalValue.innerHTML = `Items Combined Value : <span id="spanPrice"><b>$${Number(data.totalValue).toLocaleString()} CAD</b></span>`;
                 });
 
-            fetch(`api/getItemData?userName=${encodeURIComponent(userName)}`)
-                .then(response => response.json())
-                .then(data => {
-                    const allItemContainer = document.getElementById("allItemContainer");
-                    allItemContainer.innerHTML = "";
+            fetchItems(userName, 100);
 
-                    data.slice(0, 100).forEach((data, index) => {
+            // fetch(`api/getItemData?userName=${encodeURIComponent(userName)}`)
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         const allItemContainer = document.getElementById("allItemContainer");
+            //         allItemContainer.innerHTML = "";
 
-                        if (index % 5 == 0) {
-                            largeItemHolder = document.createElement('div');
-                            largeItemHolder.classList.add('fullWidthContainer');
-                            allItemContainer.appendChild(largeItemHolder);
-                        }
+            //         data.slice(0, 100).forEach((data, index) => {
 
-                        const itemTile = `
-                        <div class="itemTile">
-                        <img src="${data.image_url || 'https://res.cloudinary.com/dkgfcemw4/image/upload/v1739280006/no-photo-or-blank-image-icon.jpg'}" alt="Item Image">
-                        <div class="itemTile_lowerDesc">
-                            <p class="lblItemTitle">${data.name}</p>
-                            <p class="lblLocation">${data.location}</p>
-                            <p class="lblDatePosted">${new Date(data.dateposted).toLocaleDateString('en-GB')}</p>
-                            <div class="itemTile_bottom">
-                                <p class="lblItemPrice">$${Number(data.price).toLocaleString()}</p>
-                                <p class="lblItemCondition">${data.condition.toUpperCase()}</p>
-                            </div>
-                        </div>
-                        </div>
-                        `;
+            //             if (index % 5 == 0) {
+            //                 largeItemHolder = document.createElement('div');
+            //                 largeItemHolder.classList.add('fullWidthContainer');
+            //                 allItemContainer.appendChild(largeItemHolder);
+            //             }
 
-                        largeItemHolder.innerHTML += itemTile;
-                    });
-                });
+            //             const itemTile = `
+            //             <div class="itemTile">
+            //             <img src="${data.image_url || 'https://res.cloudinary.com/dkgfcemw4/image/upload/v1739280006/no-photo-or-blank-image-icon.jpg'}" alt="Item Image">
+            //             <div class="itemTile_lowerDesc">
+            //                 <p class="lblItemTitle">${data.name}</p>
+            //                 <p class="lblLocation">${data.location}</p>
+            //                 <p class="lblDatePosted">${new Date(data.dateposted).toLocaleDateString('en-GB')}</p>
+            //                 <div class="itemTile_bottom">
+            //                     <p class="lblItemPrice">$${Number(data.price).toLocaleString()}</p>
+            //                     <p class="lblItemCondition">${data.condition.toUpperCase()}</p>
+            //                 </div>
+            //             </div>
+            //             </div>
+            //             `;
+
+            //             largeItemHolder.innerHTML += itemTile;
+            //         });
+            //     });
         });
     </script>
 </head>

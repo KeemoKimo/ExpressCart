@@ -6,72 +6,14 @@
     <link rel="stylesheet" href="/ExpressCart/CSS/general.css">
     <link rel="stylesheet" href="/ExpressCart/CSS/mainPage.css">
     <link rel="stylesheet" href="/ExpressCart/CSS/itemTileStyle.css">
-    <title>Main</title>
+    <script src="/JS/itemTile.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            console.log('Retrieving data');
-            const urlParams = new URLSearchParams(window.location.search);
-            var userName = urlParams.get('userName');
-            fetch(`api/getItemData?userName=${encodeURIComponent(userName)}`)
-                .then(response => response.json())
-                .then(data => {
-                    const yourItemsContainer = document.getElementById('yourItemsContainer');
-                    yourItemsContainer.innerHTML = "";
-
-                    data.slice(0, 5).forEach(data => {
-                        const itemTile = `
-                    <div class="itemTile">
-                        <img src="${data.image_url || 'https://res.cloudinary.com/dkgfcemw4/image/upload/v1739280006/no-photo-or-blank-image-icon.jpg'}" alt="Item Image">
-                        <div class="itemTile_lowerDesc">
-                            <p class="lblItemTitle">${data.name}</p>
-                            <p class="lblLocation">${data.location}</p>
-                            <p class="lblDatePosted">${new Date(data.dateposted).toLocaleDateString('en-GB')}</p>
-                            <div class="itemTile_bottom">
-                                <p class="lblItemPrice">$${Number(data.price).toLocaleString()}</p>
-                                <p class="lblItemCondition">${data.condition.toUpperCase()}</p>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                        yourItemsContainer.innerHTML += itemTile;
-                    });
-                })
-                .catch(error => console.error('Error:', error));
-            fetch(`api/getItemData`)
-                .then(response => response.json())
-                .then(data => {
-                    const allItemContainer = document.getElementById('allItemContainer');
-                    allItemContainer.innerHTML = "";
-
-                    let largeItemHolder;
-                    data.slice(0, 25).forEach((data, index) => {
-
-                        if (index % 5 == 0) {
-                            largeItemHolder = document.createElement('div');
-                            largeItemHolder.classList.add('fullWidthContainer');
-                            allItemContainer.appendChild(largeItemHolder);
-                        }
-
-                        const itemTile = `
-                    <div class="itemTile">
-                        <img src="${data.image_url || 'https://res.cloudinary.com/dkgfcemw4/image/upload/v1739280006/no-photo-or-blank-image-icon.jpg'}" alt="Item Image">
-                        <div class="itemTile_lowerDesc">
-                            <p class="lblItemTitle">${data.name}</p>
-                            <p class="lblLocation">${data.location}</p>
-                            <p class="lblDatePosted">${new Date(data.dateposted).toLocaleDateString('en-GB')}</p>
-                            <div class="itemTile_bottom">
-                                <p class="lblItemPrice">$${Number(data.price).toLocaleString()}</p>
-                                <p class="lblItemCondition">${data.condition.toUpperCase()}</p>
-                            </div>
-                        </div>
-                    </div>
-                `;
-
-                        largeItemHolder.innerHTML += itemTile;
-                    });
-                });
-        }); 
+        document.addEventListener('DOMContentLoaded', function(){
+            const urlParams = new URLSearchParams(window.location.search).get('userName');
+            fetchItems(urlParams, 5);
+        });
     </script>
+    <title>Main</title>
 </head>
 
 <body>
@@ -94,7 +36,8 @@
             <input type="text" placeholder="What are you looking for today ...." id="txtItems">
         </div>
         <button id="btnSell" onclick="openSellItemPage()">Sell</button>
-        <img src="https://cdn-icons-png.flaticon.com/512/4263/4263296.png" alt="" id="imgProfile" onclick="openUserProfilePage()">
+        <img src="https://cdn-icons-png.flaticon.com/512/4263/4263296.png" alt="" id="imgProfile"
+            onclick="openUserProfilePage()">
     </div>
     <div id="categoriesDiv">
         <div id="topCategoryDiv">
@@ -171,7 +114,7 @@
         window.location.href = "addItemPage.html?userName=" + userName;
     }
 
-    function openUserProfilePage(){
+    function openUserProfilePage() {
         window.location.href = "userProfilePage.html?userName=" + userName;
     }
 </script>
