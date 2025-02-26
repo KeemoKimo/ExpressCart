@@ -1,7 +1,53 @@
-body{
+#lblHello{
+    color: white;
+}
+
+#informationDiv{
+    width: 80%;
+    height: 1000px;
+    background-color: red;
+    margin: 0 auto;
+    display: flex;
+}
+
+#itemInfoDiv{
+    width: 73%;
+    height: auto;
     background-color: blue;
 }
 
-#lblHello{
-    color: white;
+#contactInfoDiv{
+    width: 26%;
+    height: 500px;
+    background-color: yellow;
+    margin-left: auto;
+}
+
+#directoryPathLink{
+    display: flex;
+    margin-left: 10%;
+}
+
+#lblHome{
+    font-weight: lighter;
+    color: rgba(5, 5, 114, 0.704);
+}
+
+#lblCategory{
+    font-weight: lighter;
+    color: rgba(5, 5, 114, 0.704);
+}
+
+#lblHome:hover{
+    cursor: pointer;
+    transform: scale(1.01);
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+#lblCategory:hover{
+    cursor: pointer;
+    transform: scale(1.01);
+    transition: 0.3s;
+    font-weight: bold;
 }

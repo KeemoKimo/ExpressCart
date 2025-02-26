@@ -16,11 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 itemImage.src = data.url || 'https://res.cloudinary.com/dkgfcemw4/image/upload/v1739280006/no-photo-or-blank-image-icon.jpg';
 
                 const itemId = document.getElementById("lblItemId");
-                itemId.innerText = data.itemid;
+                itemId.innerText = data.item_id;
 
                 const itemTitle = document.getElementById("lblItemTitle");
                 itemTitle.innerText = data.name;
-
+ 
                 const itemLocation = document.getElementById("lblLocation");
                 itemLocation.innerText = data.location;
 
@@ -32,6 +32,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const itemCondition = document.getElementById("lblItemCondition");
                 itemCondition.innerText = data.condition;
+
+                const itemCategory = document.getElementById("lblCategory");
+                itemCategory.innerText = data.category;
 
             });
     }

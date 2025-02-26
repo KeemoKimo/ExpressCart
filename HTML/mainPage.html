@@ -8,9 +8,25 @@
     <link rel="stylesheet" href="/ExpressCart/CSS/itemTileStyle.css">
     <script src="/JS/itemTile.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function(){
+        function openSellItemPage(urlParams) {
+            window.location.href = "addItemPage.html?userName=" + urlParams;
+        }
+
+        function openUserProfilePage(urlParams) {
+            window.location.href = "userProfilePage.html?userName=" + urlParams;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
             const urlParams = new URLSearchParams(window.location.search).get('userName');
             fetchItems(urlParams, 5);
+
+            document.getElementById('btnSell').addEventListener('click', function () {
+                openSellItemPage(urlParams);
+            });
+
+            document.getElementById('imgProfile').addEventListener('click', function () {
+                openUserProfilePage(urlParams);
+            });
         });
     </script>
     <title>Main</title>
@@ -107,16 +123,7 @@
     <h2><b>Express Cart</b> developed and maintained by Bunthong Kong ©</h2>
 </footer>
 <script>
-    const queryString = window.location.search
-    const urlParams = new URLSearchParams(queryString)
-    const userName = urlParams.get('userName')
-    function openSellItemPage() {
-        window.location.href = "addItemPage.html?userName=" + userName;
-    }
 
-    function openUserProfilePage() {
-        window.location.href = "userProfilePage.html?userName=" + userName;
-    }
 </script>
 
 </html>
