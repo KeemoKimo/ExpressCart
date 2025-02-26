@@ -1,12 +1,11 @@
+const urlParams = new URLSearchParams(window.location.search);
+var userName = urlParams.get('userName');
+
 function openItem(idIn){
-    alert(idIn);
+    window.location.href = `itemPage.html?loggedInUser=${userName}&itemId=${idIn}`;
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-
-    const urlParams = new URLSearchParams(window.location.search);
-    var userName = urlParams.get('userName');
-
     function fetchUserItem(userName, limit){
         fetch(`api/getItemData?userName=${encodeURIComponent(userName)}`)
                 .then(response => response.json())
@@ -19,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function(){
                         data.slice(0, limit).forEach(item => {
                             yourItemsContainer.innerHTML += createItemTile(item);
                         });
-                    } 
+                    }    
 
                     else{ 
                         const allItemContainer = document.getElementById('allItemContainer');

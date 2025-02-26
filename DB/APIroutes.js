@@ -50,6 +50,7 @@ const sellItem = require('../DB/Routes/sellItem');
 const getItemData = require('../DB/Routes/getItemData');
 const userItemsData = require('../DB/Routes/userItemsData');
 const changePassword = require('../DB/Routes/changePassword');
+const getSpecificItemData = require('../DB/Routes/getSpecificItemData');
 
 // Use routes
 app.use('/api', signUpRoute);
@@ -60,6 +61,7 @@ app.use('/api', sellItem);
 app.use('/api', getItemData);
 app.use('/api', userItemsData);
 app.use('/api', changePassword);
+app.use('/api', getSpecificItemData);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
