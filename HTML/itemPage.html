@@ -19,25 +19,45 @@
 
 
     </script>
-</head> 
+</head>
 
 <body>
     <div id="directoryPathLink">
         <h3 id="lblHome">Home</h3>
         <h3 style="font-weight: lighter;margin-left: 20px;margin-right: 20px;">/</h3>
-        <h3 id="lblCategory">Cars & vehicle</h3>
+        <h3 id="lblCategory"></h3>
     </div>
     <div id="informationDiv">
-        <div id="itemInfoDiv"></div>
+        <div id="itemInfoDiv">
+            <div id="imgWrapper">
+                <img id="itemImage" />
+            </div>
+            <div id="addMoreImageDiv">
+            </div>
+            <div class="textOneLineWrapper">
+                <p id="lblItemTitle"></p>
+                <p id="lblItemCondition"></p>
+            </div>
+            <i>
+                <p id="lblItemId"></p>
+            </i>
+            <p id="lblItemPrice"></p>
+            <div class="iconAndDetailWrapper">
+                <img src="https://cdn-icons-png.flaticon.com/512/0/619.png" alt="">
+                <p id="lblLocation"></p>
+            </div>
+            <div class="iconAndDetailWrapper">       
+                <img src="https://cdn-icons-png.flaticon.com/512/55/55281.png" alt="">
+                <p id="lblDatePosted"></p>
+            </div>
+            <div id="descriptionWrapper">
+                <p id="lblDescription"></p>
+            </div>
+        </div>
         <div id="contactInfoDiv"></div>
     </div>
-    <img id="itemImage" />
-    <p id="lblItemId"></p>
-    <p id="lblItemTitle"></p>
-    <p id="lblLocation"></p>
-    <p id="lblDatePosted"></p>
-    <p id="lblItemPrice"></p>
-    <p id="lblItemCondition"></p>
+    <div id="divider"></div>
+    <h2 style="margin-left: 5%;">Related Posts</h2>
     <p id="lblHello"></p>
 </body>
 

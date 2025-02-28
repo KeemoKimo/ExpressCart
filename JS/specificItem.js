@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 itemImage.src = data.url || 'https://res.cloudinary.com/dkgfcemw4/image/upload/v1739280006/no-photo-or-blank-image-icon.jpg';
 
                 const itemId = document.getElementById("lblItemId");
-                itemId.innerText = data.item_id;
+                itemId.innerText = "Item Id : " + data.item_id;
 
                 const itemTitle = document.getElementById("lblItemTitle");
                 itemTitle.innerText = data.name;
@@ -25,16 +25,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 itemLocation.innerText = data.location;
 
                 const itemDatePosted = document.getElementById("lblDatePosted");
-                itemDatePosted.innerText = data.dateposted;
+                itemDatePosted.innerText = new Date(data.dateposted).toLocaleDateString('en-GB');
 
                 const itemPrice = document.getElementById("lblItemPrice");
-                itemPrice.innerText = data.price;
+                itemPrice.innerText = "$" + Number(data.price).toLocaleString();
 
                 const itemCondition = document.getElementById("lblItemCondition");
-                itemCondition.innerText = data.condition;
+                itemCondition.innerText = "(" + data.condition.toUpperCase() + ")";
 
                 const itemCategory = document.getElementById("lblCategory");
                 itemCategory.innerText = data.category;
+
+                const itemDesc = document.getElementById("lblDescription");
+                itemDesc.innerText = data.description;
 
             });
     }
