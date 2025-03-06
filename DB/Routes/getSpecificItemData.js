@@ -20,7 +20,7 @@ router.get('/item', (req, res) => {
         if (userResult.rowCount === 0) {
             res.status(404).json({ error: 'User not found' });
             return;
-        }
+        } 
 
         const loggedInID = userResult.rows[0].id;
         console.log('Logged in user:', loggedInID);
@@ -29,9 +29,13 @@ router.get('/item', (req, res) => {
             itemimages.id AS image_id, 
             items.ownerid AS owner_id,
             items.*, 
-            itemimages.*
+            itemimages.*,
+            users.username AS ownerUsername,
+            users.emailaddress AS ownerEmail,
+            users.datejoined AS ownerDateJoined
             FROM items 
             JOIN itemimages ON items.id = itemimages.itemid
+            JOIN users ON items.ownerid = users.id
             WHERE items.id = $1`;
 
         pool.query(query, [itemID], (error, result) => {
@@ -50,8 +54,8 @@ router.get('/item', (req, res) => {
                     delete data.ownerid;
                     delete data.id;
 
-                    console.log(result.rows[0]);
-                    res.json(result.rows[0]);
+                    console.log(data);
+                    res.json(data);
                 }
             }
         });

@@ -12,6 +12,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     lblHello.innerText = "You are owner of this item!";
                 }
 
+                const ownerName = document.getElementById("lblOwnerName");
+                ownerName.innerText = data.ownerusername;
+
+                const ownerEmail = document.getElementById("lblOwnerEmail");
+                ownerEmail.innerText = data.owneremail;
+
+                const ownerDateJoined = document.getElementById("lblOwnerDateJoined");
+                ownerDateJoined.innerHTML = "<p><b>Member Since : </b>" + new Date(data.ownerdatejoined).toLocaleDateString("en-GB") + "</p>";
+
                 const itemImage = document.getElementById("itemImage");
                 itemImage.src = data.url || 'https://res.cloudinary.com/dkgfcemw4/image/upload/v1739280006/no-photo-or-blank-image-icon.jpg';
 
@@ -20,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const itemTitle = document.getElementById("lblItemTitle");
                 itemTitle.innerText = data.name;
- 
+
                 const itemLocation = document.getElementById("lblLocation");
                 itemLocation.innerText = data.location;
 
@@ -41,6 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             });
     }
+
+
 
     window.loadItemData = loadItemData;
 });

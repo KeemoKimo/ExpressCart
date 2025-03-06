@@ -63,7 +63,6 @@ body{
 
 #informationDiv{
     width: 80%;
-    background-color: red;
     margin: 0 auto;
     display: flex;
     padding-top: 50px;
@@ -74,23 +73,48 @@ body{
     width: 73%;
     height: auto;
     background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 #imgWrapper{
     width: 100%;
     text-align: center;
+    /* margin-top: 100px; */
 }
 
 #contactInfoDiv{
     width: 26%;
     height: 500px;
-    background-color: yellow;
+    background-color: white;
     margin-left: auto;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+}
+
+#contactImgWrapper{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin-top: 80px;
+}
+
+#contactImgWrapper img{
+    width: 200px;
+    height: 200px;
+}
+
+#contactImgWrapper img:hover{
+    filter: drop-shadow(8px 8px 16px rgba(0, 0, 0, 0.5));
+    transition: 0.5s;
+    cursor: pointer;
 }
 
 #directoryPathLink{
     display: flex;
     margin-left: 10%;
+    padding-top: 20px;
 }
 
 #lblHome{

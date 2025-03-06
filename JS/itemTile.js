@@ -3,9 +3,14 @@ var userName = urlParams.get('userName');
 
 function openItem(idIn){
     window.location.href = `itemPage.html?loggedInUser=${userName}&itemId=${idIn}`;
-}
+} 
 
 document.addEventListener('DOMContentLoaded', function(){
+
+    // function fetchSimilarItem(itemID, limit){
+    //     fetch(`api/getItemData?itemID=${encodeURIComponent(itemID)}`)
+    // }
+
     function fetchUserItem(userName, limit){
         fetch(`api/getItemData?userName=${encodeURIComponent(userName)}`)
                 .then(response => response.json())
@@ -57,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function(){
                     });
                 });
     }
-
+ 
     function createItemTile(data) {
         return `
             <div class="itemTile" onclick="openItem(${data.id})">
@@ -69,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function(){
                     <div class="itemTile_bottom">
                         <p class="lblItemPrice">$${Number(data.price).toLocaleString()}</p>
                         <p class="lblItemCondition">${data.condition.toUpperCase()}</p>
-                    </div>
+                    </div>  
                 </div>
             </div>
         `;
