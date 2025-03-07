@@ -32,7 +32,8 @@ router.get('/item', (req, res) => {
             itemimages.*,
             users.username AS ownerUsername,
             users.emailaddress AS ownerEmail,
-            users.datejoined AS ownerDateJoined
+            users.datejoined AS ownerDateJoined,
+            users.profileimg AS ownerimg
             FROM items 
             JOIN itemimages ON items.id = itemimages.itemid
             JOIN users ON items.ownerid = users.id

@@ -11,4 +11,4 @@ document.addEventListener('DOMContentLoaded', function () {
                 "Member Since : <b>" + new Date(data.datejoined).toLocaleDateString('en-GB') + "</b>";
         });
     document.getElementById("passwordChangeContent").action = `/api/changePassword?userName=${userName}`;
-});
+});    

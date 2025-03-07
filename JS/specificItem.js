@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     lblHello.innerText = "You are owner of this item!";
                 }
 
+                const ownerImage = document.getElementById("ownerImage");
+                ownerImage.src = data.ownerimg;
+
                 const ownerName = document.getElementById("lblOwnerName");
                 ownerName.innerText = data.ownerusername;
 
