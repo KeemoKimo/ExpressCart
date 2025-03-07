@@ -7,7 +7,15 @@
     <link rel="stylesheet" href="/ExpressCart/CSS/mainPage.css">
     <link rel="stylesheet" href="/ExpressCart/CSS/itemTileStyle.css">
     <script src="/JS/itemTile.js"></script>
+    <script src="/JS/userProfile.js"></script>
     <script>
+
+        fetch(`api/getUserData?userName=${encodeURIComponent(userName)}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("imgProfile").src = data.profileimg;
+            });
+
         function openSellItemPage(urlParams) {
             window.location.href = "addItemPage.html?userName=" + urlParams;
         }
@@ -19,6 +27,8 @@
         document.addEventListener('DOMContentLoaded', function () {
             const urlParams = new URLSearchParams(window.location.search).get('userName');
             fetchItems(urlParams, 5);
+
+            document.getElementById("frmUploadImage").action = `/api/uploadImage?userName=${urlParams}`;
 
             document.getElementById('btnSell').addEventListener('click', function () {
                 openSellItemPage(urlParams);
@@ -52,8 +62,7 @@
             <input type="text" placeholder="What are you looking for today ...." id="txtItems">
         </div>
         <button id="btnSell" onclick="openSellItemPage()">Sell</button>
-        <img src="https://cdn-icons-png.flaticon.com/512/4263/4263296.png" alt="" id="imgProfile"
-            onclick="openUserProfilePage()">
+        <img src="" alt="" id="imgProfile" onclick="openUserProfilePage()">
     </div>
     <div id="categoriesDiv">
         <div id="topCategoryDiv">
@@ -111,19 +120,16 @@
 
     <div id="allItemContainer">
     </div>
-    <form action="/api/uploadImage" method="post" enctype="multipart/form-data" style="display: none;">
-        <input type="file" name="image" accept="image/*">
-        <button type="submit">Upload</button>
-    </form>
     <div id="bottomButtonWrapper">
         <button id="btnViewAll">View All Items</button>
     </div>
+    <form action="" method="post" enctype="multipart/form-data" id="frmUploadImage">
+        <input type="file" name="image" accept="image/*">
+        <button type="submit">Upload</button>
+    </form>
 </body>
 <footer>
     <h2><b>Express Cart</b> developed and maintained by Bunthong Kong ©</h2>
 </footer>
-<script>
-
-</script>
 
 </html>

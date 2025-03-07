@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function(){
     // function fetchSimilarItem(itemID, limit){
     //     fetch(`api/getItemData?itemID=${encodeURIComponent(itemID)}`)
     // }
-
     function fetchUserItem(userName, limit){
         fetch(`api/getItemData?userName=${encodeURIComponent(userName)}`)
                 .then(response => response.json())

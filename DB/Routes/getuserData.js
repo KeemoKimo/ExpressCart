@@ -15,6 +15,7 @@ router.get('/getUserData', (req, res) => {
             if (result.rowCount === 0) {
                 res.status(404).json({ error: 'User not found' });
             } else {
+                console.log(result.rows[0]);
                 res.json(result.rows[0]);
             }
         }

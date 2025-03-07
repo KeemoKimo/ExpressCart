@@ -4,7 +4,7 @@ const pool = require('../pool');
 
 router.post('/sellItem', async (req, res) => {
     try {
-        const defaultImageURL = 'https://res.cloudinary.com/dkgfcemw4/image/upload/v1739280006/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector_urz4tl.jpg';
+        const defaultImageURL = 'https://res.cloudinary.com/dkgfcemw4/image/upload/v1741278160/9e5060d1-96dc-4c7d-82e3-5bdb80595928.png';
 
         // Fix: Use parameterized query
         const insertItemQuery = `

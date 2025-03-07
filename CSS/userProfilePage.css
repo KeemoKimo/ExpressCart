@@ -2,10 +2,26 @@ body {
     text-align: center;
 }
 
+#imgUserProfile {
+    width: 200px;
+    height: 200px;
+    margin-top: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#imgUserProfile:hover{
+    cursor: pointer;
+    opacity: 0.97;
+    transform: scale(1.05);
+    transition: 0.5s;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 #lblUserName {
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 #lblMemberSince {
@@ -63,7 +79,7 @@ body {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-#fNewPassword{
+#fNewPassword {
     font-size: 18px;
     font-family: 'Poppins', sans-serif;
     width: 300px;
@@ -71,7 +87,7 @@ body {
     padding: 5px;
 }
 
-#btnSubmit{
+#btnSubmit {
     font-family: 'Poppins', sans-serif;
     padding: 10px 40px 10px 40px;
     font-size: 20px;
@@ -81,7 +97,7 @@ body {
     border-radius: 10px;
 }
 
-#btnSubmit:hover{
+#btnSubmit:hover {
     transform: scale(1.01);
     transition: 0.5s;
     cursor: pointer;
