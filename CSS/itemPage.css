@@ -158,3 +158,23 @@ body{
     object-fit: cover;
     border: 1px solid black;
 }
+
+#btnEditPost{
+    width: 58.5%;
+    height: 50px;
+    margin-left: 10%;
+    color: white;
+    font-size: 18px;
+    background-color: green;
+    margin-bottom: 50px;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    border-radius: 5px;
+    display: none;
+}
+
+#btnEditPost:hover{
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: .5s;
+}

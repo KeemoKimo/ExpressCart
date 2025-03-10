@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
 
                 if (data.loggedInUser === data.owner_id) {
-                    const lblHello = document.getElementById("lblHello");
-                    lblHello.innerText = "You are owner of this item!";
+                    const btnEdit = document.getElementById("btnEditPost");
+                    btnEdit.style.display = "block";
                 }
 
                 const ownerImage = document.getElementById("ownerImage");
@@ -53,7 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             });
     }
-
 
 
     window.loadItemData = loadItemData;

@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/ExpressCart/CSS/general.css">
     <link rel="stylesheet" href="/ExpressCart/CSS/itemPage.css">
+    <script src="/JS/itemTile.js"></script>
     <script src="/JS/specificItem.js"></script>
     <title>View Item</title>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             loadItemData();
-            
+
             document.getElementById("lblHome").addEventListener("click", function () {
                 const userName = new URLSearchParams(window.location.search).get('loggedInUser');
                 window.location.href = `mainPage.html?userName=${userName}`;
@@ -46,7 +47,7 @@
                 <img src="https://cdn-icons-png.flaticon.com/512/0/619.png" alt="">
                 <p id="lblLocation"></p>
             </div>
-            <div class="iconAndDetailWrapper">       
+            <div class="iconAndDetailWrapper">
                 <img src="https://cdn-icons-png.flaticon.com/512/55/55281.png" alt="">
                 <p id="lblDatePosted"></p>
             </div>
@@ -63,9 +64,13 @@
             <p id="lblOwnerDateJoined"></p>
         </div>
     </div>
+    <button id="btnEditPost">Edit Post</button>
     <div id="divider"></div>
     <h2 style="margin-left: 5%;">Related Posts</h2>
-    <p id="lblHello"></p>
+    <!-- <div id="allItemContainer">
+    </div> -->
+    <!-- <p id="lblHello"></p> -->
+    <!-- <button id="btnTest">Click me</button> -->
 </body>
 
 </html>

@@ -86,4 +86,6 @@ document.addEventListener('DOMContentLoaded', function(){
     fetchAllItems();
 
     window.fetchItems = fetchUserItem;
+    window.fetchRelatedPost = fetchRelatedPost;
+    
 });

@@ -104,6 +104,10 @@
     border: none;
 }
 
+.categoryBlock img{
+    border: 2px solid black;
+}
+
 .imgCategory{
     margin-top: 10%;
     width: 150px;

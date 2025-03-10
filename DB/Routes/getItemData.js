@@ -6,7 +6,7 @@ router.get('/getItemData', async (req, res) => {
     try {
 
         let userName = req.query.userName;
-
+ 
         let query = `
             SELECT items.id, items.name, items.location, items.price, items.condition, items.dateposted, 
                 itemimages.url AS image_url
@@ -21,13 +21,13 @@ router.get('/getItemData', async (req, res) => {
             let userIdResult = await pool.query(userIdQuery, [userName]);
 
             if(userIdResult.rowCount === 0){
-                return res.status(404).json({ message: "No user ID foud" });
+                return res.status(404).json({ message: "No user ID found" });
             }
-
+            
             let userId = userIdResult.rows[0].id;
-
+            
             query += ` WHERE items.ownerid = $1`;
-
+            
             params.push(userId);
         }
 

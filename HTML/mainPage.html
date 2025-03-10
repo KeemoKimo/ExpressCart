@@ -10,33 +10,38 @@
     <script src="/JS/userProfile.js"></script>
     <script>
 
-        fetch(`api/getUserData?userName=${encodeURIComponent(userName)}`)
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("imgProfile").src = data.profileimg;
-            });
-
-        function openSellItemPage(urlParams) {
+        function openSellPage() {
+            const urlParams = new URLSearchParams(window.location.search).get("userName");
             window.location.href = "addItemPage.html?userName=" + urlParams;
         }
 
-        function openUserProfilePage(urlParams) {
+        function openProfilePage() {
+            const urlParams = new URLSearchParams(window.location.search).get("userName");
             window.location.href = "userProfilePage.html?userName=" + urlParams;
         }
 
         document.addEventListener('DOMContentLoaded', function () {
             const urlParams = new URLSearchParams(window.location.search).get('userName');
+
+            fetch(`api/getUserData?userName=${encodeURIComponent(urlParams)}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("imgProfile").src = data.profileimg;
+                });
+
             fetchItems(urlParams, 5);
 
             document.getElementById("frmUploadImage").action = `/api/uploadImage?userName=${urlParams}`;
 
-            document.getElementById('btnSell').addEventListener('click', function () {
-                openSellItemPage(urlParams);
-            });
+            // document.getElementById("btnSell").addEventListener("click", function () {
+            //     console.log("Sell clicked for : " + urlParams);
+            //     window.location.href = "addItemPage.html?userName=" + urlParams;
+            // });
 
-            document.getElementById('imgProfile').addEventListener('click', function () {
-                openUserProfilePage(urlParams);
-            });
+            // document.getElementById("imgProfile").addEventListener("click", function () {
+            //     console.log("Profile clicked for : " + urlParams);
+            //     window.location.href = "userProfilePage.html?userName=" + urlParams;
+            // });
         });
     </script>
     <title>Main</title>
@@ -61,8 +66,8 @@
             </select>
             <input type="text" placeholder="What are you looking for today ...." id="txtItems">
         </div>
-        <button id="btnSell" onclick="openSellItemPage()">Sell</button>
-        <img src="" alt="" id="imgProfile" onclick="openUserProfilePage()">
+        <button id="btnSell" onclick="openSellPage()">Sell</button>
+        <img src="" alt="" id="imgProfile" onclick="openProfilePage()">
     </div>
     <div id="categoriesDiv">
         <div id="topCategoryDiv">
