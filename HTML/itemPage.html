@@ -9,8 +9,23 @@
     <script src="/JS/specificItem.js"></script>
     <title>View Item</title>
     <script>
+        function showModal() {
+            document.getElementById("editItemModal").style.display = "block";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == document.getElementById("editItemModal")) {
+                document.getElementById("editItemModal").style.display = "none";
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
+            const itemId = new URLSearchParams(window.location.search).get('itemId');
+            const userName = new URLSearchParams(window.location.search).get('loggedInUser');
+
             loadItemData();
+
+            document.getElementById("frmEditItemInfo").action = `/api/updateItem?itemId=${itemId}&userName=${userName}`;
 
             document.getElementById("lblHome").addEventListener("click", function () {
                 const userName = new URLSearchParams(window.location.search).get('loggedInUser');
@@ -64,7 +79,45 @@
             <p id="lblOwnerDateJoined"></p>
         </div>
     </div>
-    <button id="btnEditPost">Edit Post</button>
+    <button id="btnEditPost" onclick="showModal()">Edit Post</button>
+    <div id="editItemModal">
+        <div id="modalContent">
+            <h2 style="text-align: center;color: red;" id="lblHeaderPopup">Edit Your Item Information</h2>
+            <form id="frmEditItemInfo" method="post">
+                <label for="txtName" style="color: red;">Item Name : </label>
+                <input type="text" id="txtName" name="txtName" placeholder="Enter item name ..." class="txtField"
+                    required><br>
+                <label for="txtLocation" style="color: red;">Item Location : </label>
+                <input type="text" id="txtLocation" name="txtLocation" placeholder="Enter item location ..."
+                    class="txtField" required><br>
+                <label for="txtPrice" style="color: red;">Item Price : </label>
+                <input type="number" id="txtPrice" name="txtPrice" placeholder="Enter selling price ..." min="0.00"
+                    step="0.01" class="txtField" required>
+                <label for="txtPrice" id="lblPrice" class="labelStyle" style="color: red;">CAD $</label><br>
+                <label for="categories" style="color: red;">Item Category : </label>
+                <select name="categories" id="cmbCategories" class="cmbSelect" required>
+                    <option value="Cars & Vehicles">Cars & Vehicles</option>
+                    <option value="Phones & Tablets">Phones & Tablets</option>
+                    <option value="Computers & Accessories">Computers & Accessories</option>
+                    <option value="Electronics & Appliances">Electronics & Appliances</option>
+                    <option value="Real Estate">Real Estate</option>
+                    <option value="Fashion & Beauty">Fashion & Beauty</option>
+                    <option value="Furniture & Decor">Furniture & Decor</option>
+                    <option value="Books">Books</option>
+                    <option value="Sports & Hobbies">Sports & Hobbies</option>
+                    <option value="Health & Wellness">Health & Wellness</option>
+                </select><br>
+                <label for="conditions" id="lblCondition" class="labelStyle" style="color: red;">Condition : </label>
+                <select name="conditions" id="cmbConditions" class="cmbSelect" required>
+                    <option value="new">New</option>
+                    <option value="used">Used</option>
+                </select><br>
+                <textarea name="txtDescription" id="txtDescription" placeholder="Enter Item Description ..."
+                    required></textarea><br>
+                <input type="submit" id="btnConfirm" value="Confirm">
+            </form>
+        </div>
+    </div>
     <div id="divider"></div>
     <h2 style="margin-left: 5%;">Related Posts</h2>
     <!-- <div id="allItemContainer">

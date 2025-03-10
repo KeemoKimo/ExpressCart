@@ -1,12 +1,12 @@
-body{
+body {
     font-size: 20px;
 }
 
-#lblHello{
+#lblHello {
     color: green;
 }
 
-.textOneLineWrapper{
+.textOneLineWrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -14,54 +14,54 @@ body{
     /* background-color: blue; */
 }
 
-.iconAndDetailWrapper{
+.iconAndDetailWrapper {
     display: flex;
     justify-content: left;
     align-items: center;
     /* background-color: green; */
 }
 
-.iconAndDetailWrapper img{
+.iconAndDetailWrapper img {
     width: 40px;
     height: 40px;
     margin-right: 20px;
     margin-left: 15%;
 }
 
-#descriptionWrapper{
+#descriptionWrapper {
     width: 73%;
     margin: 30px auto;
     height: auto;
 }
 
-#descriptionWrapper p{
+#descriptionWrapper p {
     line-height: 50px;
 }
 
-#lblItemTitle{
+#lblItemTitle {
     font-size: 30px;
     font-weight: bold;
 }
 
-#lblItemCondition{
+#lblItemCondition {
     font-size: 30px;
     color: red;
 }
 
-#lblItemId{
+#lblItemId {
     margin-left: 15%;
     color: gray;
     margin-top: -25px;
 }
 
-#lblItemPrice{
+#lblItemPrice {
     color: red;
     font-weight: bold;
     font-size: 30px;
     margin-left: 15%;
 }
 
-#informationDiv{
+#informationDiv {
     width: 80%;
     margin: 0 auto;
     display: flex;
@@ -69,7 +69,7 @@ body{
     padding-bottom: 50px;
 }
 
-#itemInfoDiv{
+#itemInfoDiv {
     width: 73%;
     height: auto;
     background-color: white;
@@ -77,13 +77,13 @@ body{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-#imgWrapper{
+#imgWrapper {
     width: 100%;
     text-align: center;
     /* margin-top: 100px; */
 }
 
-#contactInfoDiv{
+#contactInfoDiv {
     width: 26%;
     height: 500px;
     background-color: white;
@@ -93,73 +93,73 @@ body{
     border-radius: 10px;
 }
 
-#contactImgWrapper{
+#contactImgWrapper {
     width: 100%;
     height: auto;
     text-align: center;
     margin-top: 80px;
 }
 
-#contactImgWrapper img{
+#contactImgWrapper img {
     width: 200px;
     height: 200px;
 }
 
-#contactImgWrapper img:hover{
+#contactImgWrapper img:hover {
     filter: drop-shadow(8px 8px 16px rgba(0, 0, 0, 0.5));
     transition: 0.5s;
     cursor: pointer;
 }
 
-#directoryPathLink{
+#directoryPathLink {
     display: flex;
     margin-left: 10%;
     padding-top: 20px;
 }
 
-#lblHome{
+#lblHome {
     font-weight: lighter;
     color: rgba(5, 5, 114, 0.704);
 }
 
-#lblCategory{
+#lblCategory {
     font-weight: lighter;
     color: rgba(5, 5, 114, 0.704);
 }
 
-#lblHome:hover{
+#lblHome:hover {
     cursor: pointer;
     transform: scale(1.01);
     transition: 0.3s;
     font-weight: bold;
 }
 
-#lblCategory:hover{
+#lblCategory:hover {
     cursor: pointer;
     transform: scale(1.01);
     transition: 0.3s;
     font-weight: bold;
 }
 
-#itemImage{
+#itemImage {
     width: 70%;
     height: 700px;
 }
 
-#addMoreImageDiv{
+#addMoreImageDiv {
     width: 70%;
     height: 150px;
     background-color: green;
     margin: 0 auto;
 }
 
-#ownerImage{
+#ownerImage {
     border-radius: 50%;
     object-fit: cover;
     border: 1px solid black;
 }
 
-#btnEditPost{
+#btnEditPost {
     width: 58.5%;
     height: 50px;
     margin-left: 10%;
@@ -173,8 +173,78 @@ body{
     display: none;
 }
 
-#btnEditPost:hover{
+#btnEditPost:hover {
     cursor: pointer;
     transform: scale(1.02);
     transition: .5s;
+}
+
+#editItemModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+#modalContent {
+    background-color: #f8f7f7;
+    border-radius: 10px;
+    margin: 2% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
+
+#frmEditItemInfo{
+    background-color: white;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    border-radius: 15px;
+}
+
+#txtLocation, #txtPrice, #txtName, #btnConfirm{
+    width: 400px;
+    height: 50px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+#txtDescription{
+    width: 800px;
+    height: 250px;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+#cmbCategories, #cmbConditions{
+    width: 400px;
+    height: 50px;
+    border-radius: 5px;
+    padding-left: 20px;
+}
+
+#txtLocation, #txtPrice , #cmbCategories, #cmbConditions, #txtDescription, #btnConfirm{
+    margin-top: 30px;
+    font-family: 'Poppins', sans-serif;
+}
+
+#btnConfirm{
+    border: none;
+    background-color: green;
+    font-weight: bold;
+    color: white;
+ }
+
+#btnConfirm:hover{
+    cursor: pointer;
+    transition: .5s;
+    transform: scale(1.01);
 }

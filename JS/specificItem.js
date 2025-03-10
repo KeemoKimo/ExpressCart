@@ -51,6 +51,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 const itemDesc = document.getElementById("lblDescription");
                 itemDesc.innerText = data.description;
 
+                //FOR MODAL BOX DATA
+
+                document.getElementById("txtName").value = data.name;
+
+                document.getElementById("txtLocation").value = data.location;
+
+                document.getElementById("txtPrice").value = data.price;
+
+                document.getElementById("cmbCategories").value = data.category;
+
+                document.getElementById("cmbConditions").value = data.condition;
+
+                document.getElementById("txtDescription").value = data.description;
+
+                document.getElementById("txtDescription").innerText = data.description;
+                
+                document.getElementById("lblHeaderPopup").innerText += ` (Item No. ${data.item_id})`;
+
             });
     }
 

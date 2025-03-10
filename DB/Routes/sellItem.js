@@ -6,7 +6,6 @@ router.post('/sellItem', async (req, res) => {
     try {
         const defaultImageURL = 'https://res.cloudinary.com/dkgfcemw4/image/upload/v1741278160/9e5060d1-96dc-4c7d-82e3-5bdb80595928.png';
 
-        // Fix: Use parameterized query
         const insertItemQuery = `
             INSERT INTO items (name, category, price, condition, location, ownerId, description) 
             VALUES ($1, $2, $3, $4, $5, $6, $7) 
