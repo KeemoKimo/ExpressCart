@@ -24,8 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const ownerDateJoined = document.getElementById("lblOwnerDateJoined");
                 ownerDateJoined.innerHTML = "<p><b>Member Since : </b>" + new Date(data.ownerdatejoined).toLocaleDateString("en-GB") + "</p>";
 
-                const itemImage = document.getElementById("itemImage");
-                itemImage.src = data.url || 'https://res.cloudinary.com/dkgfcemw4/image/upload/v1739280006/no-photo-or-blank-image-icon.jpg';
+                displayImages(data);
 
                 const itemId = document.getElementById("lblItemId");
                 itemId.innerText = "Item Id : " + data.item_id;
@@ -66,10 +65,31 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("txtDescription").value = data.description;
 
                 document.getElementById("txtDescription").innerText = data.description;
-                
+
                 document.getElementById("lblHeaderPopup").innerText += ` (Item No. ${data.item_id})`;
 
             });
+    }
+
+    function displayImages(data) {
+        const images = data.images;
+
+        const itemImage = document.getElementById("itemImage");
+
+        itemImage.src = images.length > 0 ? images[0] : "https://res.cloudinary.com/dkgfcemw4/image/upload/v1739280006/no-photo-or-blank-image-icon.jpg";
+
+        const previewDivs = document.querySelectorAll(".imagePrev");
+
+        for (let i = 0; i < previewDivs.length; i++) {
+            const imageTag = previewDivs[i].querySelector("img");
+
+            if (images[i + 1]) {
+                imageTag.src = images[i + 1];
+                previewDivs[i].style.display = "block";
+            } else {
+                previewDivs[i].style.display = "none";
+            }
+        }
     }
 
 

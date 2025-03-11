@@ -151,6 +151,14 @@ body {
     height: 150px;
     background-color: green;
     margin: 0 auto;
+    display: flex;
+}
+
+.imagePrev{
+    border: 1px solid black;
+    background-color: yellow;
+    width: 20%;
+    height: 150px;
 }
 
 #ownerImage {

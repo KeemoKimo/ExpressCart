@@ -5,6 +5,8 @@ const pool = require('../pool');
 router.get('/item', (req, res) => {
     const itemID = req.query.itemID;
     const userName = req.query.loggedInUser;
+    const DEFAULT_IMAGE_URL = "https://res.cloudinary.com/dkgfcemw4/image/upload/v1741278160/9e5060d1-96dc-4c7d-82e3-5bdb80595928.png";
+
     console.log(itemID);
     console.log(userName);
 
@@ -20,7 +22,7 @@ router.get('/item', (req, res) => {
         if (userResult.rowCount === 0) {
             res.status(404).json({ error: 'User not found' });
             return;
-        } 
+        }
 
         const loggedInID = userResult.rows[0].id;
         console.log('Logged in user:', loggedInID);
@@ -48,6 +50,7 @@ router.get('/item', (req, res) => {
                     res.status(404).json({ error: 'Item not found' });
                 } else {
                     const data = result.rows[0];
+                    data.images = result.rows.map(row => row.url).filter(url => url !== DEFAULT_IMAGE_URL);
 
                     data.loggedInUser = loggedInID;
 
