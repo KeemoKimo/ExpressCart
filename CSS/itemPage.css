@@ -144,21 +144,74 @@ body {
 #itemImage {
     width: 70%;
     height: 700px;
+    margin-bottom: 5px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#itemImage:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+    transition: 0.5s;
 }
 
 #addMoreImageDiv {
     width: 70%;
     height: 150px;
-    background-color: green;
+    background-color: #f8f7f7;
     margin: 0 auto;
     display: flex;
+    align-items: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
 }
 
-.imagePrev{
-    border: 1px solid black;
-    background-color: yellow;
+.imagePrev {
+    border: none;
     width: 20%;
     height: 150px;
+}
+
+.imagePrev img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.imagePrev:hover {
+    transform: scale(1.03);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+#imgPrev1 img,
+#imgPrev1 {
+    border-radius: 10px 0 0 10px;
+}
+
+#imgPrev5 img,
+#imgPrev5 {
+    border-radius: 0 10px 10px 0;
+}
+
+#btnAddImage {
+    width: 70%;
+    height: 60px;
+    color: white;
+    background-color: green;
+    border: none;
+    margin: 50px auto;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    display: none;
+}
+
+#btnAddImage:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+    transition: 0.5s;
 }
 
 #ownerImage {
@@ -209,7 +262,7 @@ body {
     width: 50%;
 }
 
-#frmEditItemInfo{
+#frmEditItemInfo {
     background-color: white;
     padding: 20px;
     font-family: 'Poppins', sans-serif;
@@ -217,14 +270,17 @@ body {
     border-radius: 15px;
 }
 
-#txtLocation, #txtPrice, #txtName, #btnConfirm{
+#txtLocation,
+#txtPrice,
+#txtName,
+#btnConfirm {
     width: 400px;
     height: 50px;
     padding: 15px;
     border-radius: 5px;
 }
 
-#txtDescription{
+#txtDescription {
     width: 800px;
     height: 250px;
     padding: 15px;
@@ -232,26 +288,32 @@ body {
     font-size: 15px;
 }
 
-#cmbCategories, #cmbConditions{
+#cmbCategories,
+#cmbConditions {
     width: 400px;
     height: 50px;
     border-radius: 5px;
     padding-left: 20px;
 }
 
-#txtLocation, #txtPrice , #cmbCategories, #cmbConditions, #txtDescription, #btnConfirm{
+#txtLocation,
+#txtPrice,
+#cmbCategories,
+#cmbConditions,
+#txtDescription,
+#btnConfirm {
     margin-top: 30px;
     font-family: 'Poppins', sans-serif;
 }
 
-#btnConfirm{
+#btnConfirm {
     border: none;
     background-color: green;
     font-weight: bold;
     color: white;
- }
+}
 
-#btnConfirm:hover{
+#btnConfirm:hover {
     cursor: pointer;
     transition: .5s;
     transform: scale(1.01);

@@ -10,7 +10,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (data.loggedInUser === data.owner_id) {
                     const btnEdit = document.getElementById("btnEditPost");
                     btnEdit.style.display = "block";
+
+                    // if(data.image_urls)
+
+                    const btnAddImage = document.getElementById("btnAddImage");
+                    if (data.images.length == 6) {
+                        btnAddImage.style.display = "none";
+                    } else {
+                        btnAddImage.style.display = "block";
+                    }
+
                 }
+
+
 
                 const ownerImage = document.getElementById("ownerImage");
                 ownerImage.src = data.ownerimg;
@@ -77,6 +89,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const itemImage = document.getElementById("itemImage");
 
         itemImage.src = images.length > 0 ? images[0] : "https://res.cloudinary.com/dkgfcemw4/image/upload/v1739280006/no-photo-or-blank-image-icon.jpg";
+
+        if (images.length == 0) {
+            document.getElementById("addMoreImageDiv").style.display = "none";
+        }
 
         const previewDivs = document.querySelectorAll(".imagePrev");
 

@@ -9,6 +9,8 @@
     <script src="/JS/specificItem.js"></script>
     <title>View Item</title>
     <script>
+
+
         function showModal() {
             document.getElementById("editItemModal").style.display = "block";
         }
@@ -31,6 +33,19 @@
                 const userName = new URLSearchParams(window.location.search).get('loggedInUser');
                 window.location.href = `mainPage.html?userName=${userName}`;
             });
+
+            document.getElementById("btnAddImage").addEventListener("click", function () {
+                document.getElementById("fileInput").click();
+            });
+
+            document.getElementById("fileInput").addEventListener("change", function () {
+                if (this.files.length > 0) {
+                    const form = document.getElementById("frmUploadImage");
+                    form.action = `/api/uploadImage?userName=${urlParams}&itemID=${itemId}`;
+                    form.submit();
+                }
+            });
+
         });
 
 
@@ -64,6 +79,12 @@
                 <div class="imagePrev" id="imgPrev5">
                     <img src="" alt="" id="imgPrev5_img">
                 </div>
+            </div>
+            <form action="" method="post" enctype="multipart/form-data" id="frmUploadImage" style="display: none;">
+                <input type="file" name="image" accept="image/*" id="fileInput">
+            </form>
+            <div id="btnAddImage">
+                Add Image
             </div>
             <div class="textOneLineWrapper">
                 <p id="lblItemTitle"></p>

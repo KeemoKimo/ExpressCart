@@ -20,6 +20,7 @@ const upload = multer({ storage: storage });
 router.post('/uploadImage', upload.single('image'), (req, res) => {
 
     const userName = req.query.userName?.split("=")[1] || req.query.userName;
+    const itemID = req.query.itemID;
 
     if (!req.file) {
         return res.status(400).json({ error: 'No file uploaded' });
@@ -31,21 +32,38 @@ router.post('/uploadImage', upload.single('image'), (req, res) => {
             return res.status(500).json({ error: 'Error uploading to Cloudinary' });
         }
 
-        const insertPfpImageQuery = `UPDATE users SET profileimg = $1 WHERE username = $2`;
-        const values = [result.secure_url, userName];
-        console.log("Updating profile to link : " + result.secure_url + ", For : " + userName);
+        if (userName && !itemID) {
+            const insertPfpImageQuery = `UPDATE users SET profileimg = $1 WHERE username = $2`;
+            const values = [result.secure_url, userName];
+            console.log("Updating profile to link : " + result.secure_url + ", For : " + userName);
 
-        pool.query(insertPfpImageQuery, values, (error, result) => {
-            if (error) {
-                console.error('Error occured : ', error);
-                res.status(500).send('An error occured while updating profile picture');
-            } else {
-                console.log(`Profile picture updated for ${userName}`);
-                res.redirect(req.get("Referrer") || "/");
-            }
-        });
+            pool.query(insertPfpImageQuery, values, (error, result) => {
+                if (error) {
+                    console.error('Error occured : ', error);
+                    res.status(500).send('An error occured while updating profile picture');
+                } else {
+                    console.log(`Profile picture updated for ${userName}`);
+                    res.redirect(req.get("Referrer") || "/");
+                }
+            });
+        }
+        else if (userName && itemID) {
+            const uploadItemImageQuery = `INSERT INTO itemimages (url, itemid)
+                                        VALUES($1, $2)`;
+            const values = [result.secure_url, itemID];
+            console.log("Adding Image for Item #" + itemID);
 
-        //console.log(res.json({ public_id: result.public_id, url: result.secure_url }));
+            pool.query(uploadItemImageQuery, values, (error, result) => {
+                if (error) {
+                    console.error('Error occured : ', error);
+                    res.status(500).send('An error occured while adding item image');
+                } else {
+                    console.log(`Item image added for item ${itemID}`);
+                    res.redirect(req.get("Referrer") || "/");
+                }
+            });
+        }
+
     }).end(req.file.buffer);
 });
 
