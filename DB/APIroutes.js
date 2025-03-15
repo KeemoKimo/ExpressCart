@@ -53,6 +53,7 @@ const changePassword = require('../DB/Routes/changePassword');
 const getSpecificItemData = require('../DB/Routes/getSpecificItemData');
 const updateItemInfo = require('../DB/Routes/updateItemData');
 const relatedPost = require('../DB/Routes/relatedPost');
+const deletePost = require('../DB/Routes/deletePost');
 
 // Use routes
 app.use('/api', signUpRoute);
@@ -66,6 +67,7 @@ app.use('/api', changePassword);
 app.use('/api', getSpecificItemData);
 app.use('/api', updateItemInfo);
 app.use('/api', relatedPost);
+app.use('/api', deletePost);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

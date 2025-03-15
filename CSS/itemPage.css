@@ -240,6 +240,26 @@ body {
     transition: .5s;
 }
 
+#btnDeletePost {
+    width: 58.5%;
+    height: 50px;
+    margin-left: 10%;
+    color: white;
+    font-size: 18px;
+    background-color: red;
+    margin-bottom: 50px;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    border-radius: 5px;
+    display: none;
+}
+
+#btnDeletePost:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: .5s;
+}
+
 #editItemModal {
     display: none;
     position: fixed;

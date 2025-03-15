@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     const btnEdit = document.getElementById("btnEditPost");
                     btnEdit.style.display = "block";
 
+                    const btnDelete = document.getElementById("btnDeletePost");
+                    btnDelete.style.display = "block";
+
                     // if(data.image_urls)
 
                     const btnAddImage = document.getElementById("btnAddImage");

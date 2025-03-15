@@ -13,6 +13,12 @@
     height: 100%;
 }
 
+.leftSideDiv img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .rightSideDiv{
     float: right;
     width: 40%;

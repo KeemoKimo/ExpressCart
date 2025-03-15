@@ -13,3 +13,18 @@ body {
     height: 1px;
     margin: 0 auto;
 }
+
+footer{
+    margin-top: 50px;
+    width: 100%;
+    height: 300px;
+    background-color: white;
+}
+
+footer h2{
+    font-weight: lighter;
+    text-align: center;
+    line-height: 300px;
+    vertical-align: middle;
+    user-select: none;
+}
