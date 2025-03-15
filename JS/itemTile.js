@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch(`api/getRelatedPostData?itemID=${itemID}`)
             .then(response => response.json())
             .then(data => {
+                console.log("Related item data : " + JSON.stringify(data, null, 2));
                 const allItemContainer = document.getElementById('allItemContainer');
                 allItemContainer.innerHTML = "";
 

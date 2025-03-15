@@ -15,13 +15,24 @@ router.get('/getRelatedPostData', async (req, res) => {
             return;
         }
         category = categoryResult.rows[0].category;
- 
-        let relatedPostQuery = `SELECT * FROM items WHERE category = $1 AND id !=$2`;
+
+        let relatedPostQuery = `
+            SELECT 
+            items.id, items.name, items.category, items.price, items.condition, 
+            items.location, items.dateposted, 
+            COALESCE(STRING_AGG(itemimages.url, ','), '') AS image_urls
+            FROM items 
+            LEFT JOIN itemimages ON items.id = itemimages.itemid 
+            WHERE items.category = $1 AND items.id != $2
+            GROUP BY items.id, items.name, items.category, items.price, items.condition, 
+                    items.location, items.dateposted;
+        `;
+
         pool.query(relatedPostQuery, [category, itemID], (error, finalResult) => {
             if (error) {
                 console.error('Error occurred:', error);
                 res.status(500).json({ error: 'Database error' });
-            } else{
+            } else {
                 res.json(finalResult.rows);
             }
         });
