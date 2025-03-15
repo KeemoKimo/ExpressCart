@@ -1,8 +1,9 @@
 const urlParams = new URLSearchParams(window.location.search);
 var userName = urlParams.get('userName');
+var loggedInUser = urlParams.get('loggedInUser');
 
 function openItem(idIn) {
-    window.location.href = `itemPage.html?loggedInUser=${userName}&itemId=${idIn}`;
+    window.location.href = `itemPage.html?loggedInUser=${userName !== null ? userName : loggedInUser}&itemId=${idIn}`;
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -59,6 +60,28 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 
+
+    function fetchRelatedItems(itemID) {
+        fetch(`api/getRelatedPostData?itemID=${itemID}`)
+            .then(response => response.json())
+            .then(data => {
+                const allItemContainer = document.getElementById('allItemContainer');
+                allItemContainer.innerHTML = "";
+
+                let largeItemHolder;
+                data.slice(0, 10).forEach((item, index) => {
+
+                    if (index % 5 == 0) {
+                        largeItemHolder = document.createElement('div');
+                        largeItemHolder.classList.add('fullWidthContainer');
+                        allItemContainer.appendChild(largeItemHolder);
+                    }
+
+                    largeItemHolder.innerHTML += createItemTile(item);
+                });
+            });
+    }
+
     function createItemTile(data) {
         const defaultNoImage = "https://res.cloudinary.com/dkgfcemw4/image/upload/v1741278160/9e5060d1-96dc-4c7d-82e3-5bdb80595928.png";
 
@@ -91,6 +114,6 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchAllItems();
 
     window.fetchItems = fetchUserItem;
-    window.fetchRelatedPost = fetchRelatedPost;
+    window.fetchRelatedItems = fetchRelatedItems;
 
 });

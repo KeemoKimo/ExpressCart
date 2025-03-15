@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/ExpressCart/CSS/general.css">
     <link rel="stylesheet" href="/ExpressCart/CSS/itemPage.css">
+    <link rel="stylesheet" href="/ExpressCart/CSS/itemTileStyle.css">
     <script src="/JS/itemTile.js"></script>
     <script src="/JS/specificItem.js"></script>
     <title>View Item</title>
@@ -26,6 +27,7 @@
             const userName = new URLSearchParams(window.location.search).get('loggedInUser');
 
             loadItemData();
+            fetchRelatedItems(itemId);
 
             document.getElementById("frmEditItemInfo").action = `/api/updateItem?itemId=${itemId}&userName=${userName}`;
 
@@ -156,6 +158,8 @@
     </div>
     <div id="divider"></div>
     <h2 style="margin-left: 5%;">Related Posts</h2>
+    <div id="allItemContainer">
+    </div>
     <!-- <div id="allItemContainer">
     </div> -->
     <!-- <p id="lblHello"></p> -->
