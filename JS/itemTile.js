@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function createItemTile(data) {
-        const defaultNoImage = "https://res.cloudinary.com/dkgfcemw4/image/upload/v1741278160/9e5060d1-96dc-4c7d-82e3-5bdb80595928.png";
+        const defaultNoImage = "https://res.cloudinary.com/dkgfcemw4/image/upload/v1742222613/49b22b6c-2664-4271-bda2-576e84661667.png";
 
         const imageUrls = data.image_urls ? data.image_urls.split(',') : [];
 

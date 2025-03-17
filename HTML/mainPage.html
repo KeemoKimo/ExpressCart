@@ -10,7 +10,7 @@
     <script src="/JS/itemTile.js"></script>
     <script src="/JS/userProfile.js"></script>
     <script src="/JS/navBarFunctions.js"></script>
-    <script> 
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
             const urlParams = new URLSearchParams(window.location.search).get('userName');
 
@@ -33,17 +33,17 @@
         <h1 id="lblLogo_NAV">expressCart.</h1>
         <div id="searchContainer">
             <select name="categories" id="cmbCategories_NAV">
-                <option value="carsAndVehicle">Cars & Vehicles</option>
-                <option value="phonesAndTablet">Phones & Tablets</option>
-                <option value="computersAndAccessories">Computers & Accessories</option>
-                <option value="electronicsAndAppliances">Electronics & Appliances</option>
-                <option value="realEstate">Real Estate</option>
-                <option value="fashionAndBeauty">Fashion & Beauty</option>
-                <option value="furnitureAndDecor">Furniture & Decor</option>
-                <option value="books">Books</option>
-                <option value="sportsAndHobbies">Sports & Hobbies</option>
-                <option value="healthAndWellness">Health & Wellness</option>
-                <option value="allCategories" selected>All Categories</option>
+                <option value="Cars & Vehicles">Cars & Vehicles</option>
+                <option value="Phones & Tablets">Phones & Tablets</option>
+                <option value="Computers & Accessories">Computers & Accessories</option>
+                <option value="Electronics & Appliances">Electronics & Appliances</option>
+                <option value="Real Estate">Real Estate</option>
+                <option value="Fashion & Beauty">Fashion & Beauty</option>
+                <option value="Furniture & Decor">Furniture & Decor</option>
+                <option value="Books">Books</option>
+                <option value="Sports & Hobbies">Sports & Hobbies</option>
+                <option value="Health & Wellness">Health & Wellness</option>
+                <option selected>All Categories</option>
             </select>
             <input type="text" placeholder="What are you looking for today ...." id="txtItems_NAV">
         </div>
@@ -107,7 +107,7 @@
     <div id="allItemContainer">
     </div>
     <div id="bottomButtonWrapper">
-        <button id="btnViewAll">View All Items</button>
+        <button id="btnViewAll" onclick="openAllPostPage()">View All Items</button>
     </div>
 </body>
 <footer>

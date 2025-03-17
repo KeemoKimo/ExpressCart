@@ -9,11 +9,24 @@ document.addEventListener("DOMContentLoaded", function () {
     function openProfilePage() {
         window.location.href = "userProfilePage.html?userName=" + userName;
     }
+
+    function openAllPostPage(){
+        window.location.href = "specificCategoryPage.html?userName=" + userName;
+    }
     
     document.getElementById("lblLogo_NAV").addEventListener("click", function(){
         window.location.href = "mainPage.html?userName=" + userName;
     });
 
+    document.getElementById("txtItems_NAV").addEventListener("keydown", function(event){
+        if(event.key == 'Enter'){
+            alert("Selected category : " + document.getElementById("cmbCategories_NAV").value);
+        }
+    });
+
+
+
     window.openSellPage = openSellPage;
     window.openProfilePage = openProfilePage;
+    window.openAllPostPage = openAllPostPage;
 });

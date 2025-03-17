@@ -8,6 +8,9 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
+const defaultImageUrl = 'https://res.cloudinary.com/dkgfcemw4/image/upload/v1742222613/49b22b6c-2664-4271-bda2-576e84661667.png';
+
+
 router.delete('/deletePost', async (req, res) => {
     try {
         const itemID = req.body.itemId;
@@ -20,6 +23,12 @@ router.delete('/deletePost', async (req, res) => {
 
         for (let row of rows) {
             const imageUrl = row.url;
+
+            if (imageUrl === defaultImageUrl) {
+                console.log('Skipping default image, no deletion performed');
+                continue;
+            }
+
             const publicId = extractPublicId(imageUrl);
 
             if (publicId) {

@@ -6,6 +6,7 @@ router.get('/getItemData', async (req, res) => {
     try {
 
         let userName = req.query.userName;
+        let category = req.query.category;
 
         let query = `
                 SELECT items.id, 
@@ -34,6 +35,11 @@ router.get('/getItemData', async (req, res) => {
             query += ` WHERE items.ownerid = $1`;
 
             params.push(userId);
+        }
+
+        if(category){
+            query += ` WHERE items.category = $1`;
+            params.push(category);
         }
 
         query += ` GROUP BY items.id, items.name, items.location, items.price, items.condition, items.dateposted
