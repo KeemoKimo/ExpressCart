@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => console.error('Error:', error));
     }
 
-    function fetchAllItems() {
+    function fetchAllItems(amount) {
         fetch(`api/getItemData`)
             .then(response => response.json())
             .then(data => {
@@ -47,7 +47,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 allItemContainer.innerHTML = "";
 
                 let largeItemHolder;
-                data.slice(0, 25).forEach((item, index) => {
+                data.slice(0, amount).forEach((item, index) => {
+
+                    if (index % 5 == 0) {
+                        largeItemHolder = document.createElement('div');
+                        largeItemHolder.classList.add('fullWidthContainer');
+                        allItemContainer.appendChild(largeItemHolder);
+                    }
+
+                    largeItemHolder.innerHTML += createItemTile(item);
+                });
+            });
+    }
+
+    function fetchSpecificCategory(amount, category) {
+        fetch(`api/getItemData?category=${category}`)
+            .then(response => response.json())
+            .then(data => {
+                const allItemContainer = document.getElementById('allItemContainer');
+                allItemContainer.innerHTML = "";
+
+                let largeItemHolder;
+                data.slice(0, amount).forEach((item, index) => {
 
                     if (index % 5 == 0) {
                         largeItemHolder = document.createElement('div');
@@ -112,9 +133,9 @@ document.addEventListener('DOMContentLoaded', function () {
         fetchUserItem(userName);
     }
 
-    fetchAllItems();
-
     window.fetchItems = fetchUserItem;
     window.fetchRelatedItems = fetchRelatedItems;
+    window.fetchAllItems = fetchAllItems;
+    window.fetchSpecificCategory = fetchSpecificCategory;
 
 });

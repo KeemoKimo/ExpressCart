@@ -11,12 +11,24 @@
     <script src="/JS/navBarFunctions.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const urlParams = new URLSearchParams(window.location.search).get('userName');
+            const urlParams = new URLSearchParams(window.location.search).get('loggedInUser');
+            let category = new URLSearchParams(window.location.search).get('category');
+            category = decodeURIComponent(category);
+
             fetch(`api/getUserData?userName=${encodeURIComponent(urlParams)}`)
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById("imgProfile").src = data.profileimg;
                 });
+
+            if (category) {
+                if (category === 'All Categories') {
+                    fetchAllItems(25);
+                } else {
+                    console.log("Fetching for : " + category);
+                    fetchSpecificCategory(25, encodeURIComponent(category));
+                }
+            }
         });
     </script>
     <title>Items</title>
@@ -43,6 +55,11 @@
         </div>
         <button id="btnSell" onclick="openSellPage()">Sell</button>
         <img src="" alt="" id="imgProfile" onclick="openProfilePage()">
+    </div>
+    <div id="spaceGap" style="height: 100px;">
+
+    </div>
+    <div id="allItemContainer">
     </div>
 </body>
 

@@ -1,4 +1,3 @@
-
 #lblHello {
     color: green;
 }
@@ -160,7 +159,8 @@
     background-color: #f8f7f7;
     margin: 0 auto;
     display: flex;
-    align-items: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;
 }
 
@@ -335,4 +335,28 @@
     cursor: pointer;
     transition: .5s;
     transform: scale(1.01);
+}
+
+
+#bottomButtonWrapper {
+    width: 100%;
+    text-align: center;
+}
+
+#btnViewAll {
+    width: 90%;
+    height: 50px;
+    margin: 0 auto;
+    border: none;
+    background-color: rgb(25, 194, 25);
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+#btnViewAll:hover {
+    cursor: pointer;
+    opacity: 0.9;
+    transform: scale(1.01);
+    transition: 0.5s;
 }

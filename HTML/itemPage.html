@@ -98,7 +98,7 @@
                 <option value="Books">Books</option>
                 <option value="Sports & Hobbies">Sports & Hobbies</option>
                 <option value="Health & Wellness">Health & Wellness</option>
-                <option selected>All Categories</option>
+                <option value="All Categories" selected>All Categories</option>
             </select>
             <input type="text" placeholder="What are you looking for today ...." id="txtItems_NAV">
         </div>
@@ -211,10 +211,9 @@
     <h2 style="margin-left: 5%;">Related Posts</h2>
     <div id="allItemContainer">
     </div>
-    <!-- <div id="allItemContainer">
-    </div> -->
-    <!-- <p id="lblHello"></p> -->
-    <!-- <button id="btnTest">Click me</button> -->
+    <div id="bottomButtonWrapper">
+        <button id="btnViewAll" onclick="openAllPostPage()">View All Items</button>
+    </div>
 </body>
 <footer>
     <h2><b>Express Cart</b> developed and maintained by Bunthong Kong ©</h2>

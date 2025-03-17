@@ -20,7 +20,12 @@ router.get('/getItemData', async (req, res) => {
                 LEFT JOIN itemimages ON items.id = itemimages.itemid
         `;
 
+        if(category){
+            category = decodeURIComponent(category);
+        }
+
         let params = [];
+        let conditions = [];
 
         if (userName) {
             let userIdQuery = `SELECT * FROM users WHERE username = $1`;
@@ -32,14 +37,17 @@ router.get('/getItemData', async (req, res) => {
 
             let userId = userIdResult.rows[0].id;
 
-            query += ` WHERE items.ownerid = $1`;
-
+            conditions.push(`items.ownerid = $${params.length + 1}`);
             params.push(userId);
         }
 
-        if(category){
-            query += ` WHERE items.category = $1`;
+        if(category && category !== "All Categories"){
+            conditions.push(`items.category = $${params.length + 1}`);
             params.push(category);
+        }
+
+        if (conditions.length > 0) {
+            query += ` WHERE ` + conditions.join(' AND ');
         }
 
         query += ` GROUP BY items.id, items.name, items.location, items.price, items.condition, items.dateposted

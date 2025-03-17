@@ -21,6 +21,7 @@
                 });
 
             fetchItems(urlParams, 5);
+            fetchAllItems(25);
 
             document.getElementById("frmUploadImage").action = `/api/uploadImage?userName=${urlParams}`;
         });
@@ -43,7 +44,7 @@
                 <option value="Books">Books</option>
                 <option value="Sports & Hobbies">Sports & Hobbies</option>
                 <option value="Health & Wellness">Health & Wellness</option>
-                <option selected>All Categories</option>
+                <option value="All Categories" selected>All Categories</option>
             </select>
             <input type="text" placeholder="What are you looking for today ...." id="txtItems_NAV">
         </div>
@@ -52,7 +53,7 @@
     </div>
     <div id="categoriesDiv">
         <div id="topCategoryDiv">
-            <div class="categoryBlock" id="categoryCars">
+            <div class="categoryBlock" id="categoryCars" onclick="">
                 <img src="https://cdn-icons-png.flaticon.com/512/2555/2555021.png" alt="" class="imgCategory">
                 <p>Cars & Vehicles</p>
             </div>
