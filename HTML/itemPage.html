@@ -6,8 +6,10 @@
     <link rel="stylesheet" href="/ExpressCart/CSS/general.css">
     <link rel="stylesheet" href="/ExpressCart/CSS/itemPage.css">
     <link rel="stylesheet" href="/ExpressCart/CSS/itemTileStyle.css">
+    <link rel="stylesheet" href="/ExpressCart/CSS/navBar.css">
     <script src="/JS/itemTile.js"></script>
     <script src="/JS/specificItem.js"></script>
+    <script src="/JS/navBarFunctions.js"></script>
     <title>View Item</title>
     <script>
 
@@ -15,8 +17,6 @@
         function showModal() {
             document.getElementById("editItemModal").style.display = "block";
         }
-
-
 
         window.onclick = function (event) {
             if (event.target == document.getElementById("editItemModal")) {
@@ -27,6 +27,12 @@
         document.addEventListener('DOMContentLoaded', function () {
             const itemId = new URLSearchParams(window.location.search).get('itemId');
             const userName = new URLSearchParams(window.location.search).get('loggedInUser');
+
+            fetch(`api/getUserData?userName=${encodeURIComponent(userName)}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("imgProfile").src = data.profileimg;
+                });
 
             loadItemData();
             fetchRelatedItems(itemId);
@@ -78,6 +84,27 @@
 </head>
 
 <body>
+    <div id="navBar">
+        <h1 id="lblLogo_NAV">expressCart.</h1>
+        <div id="searchContainer">
+            <select name="categories" id="cmbCategories_NAV">
+                <option value="carsAndVehicle">Cars & Vehicles</option>
+                <option value="phonesAndTablet">Phones & Tablets</option>
+                <option value="computersAndAccessories">Computers & Accessories</option>
+                <option value="electronicsAndAppliances">Electronics & Appliances</option>
+                <option value="realEstate">Real Estate</option>
+                <option value="fashionAndBeauty">Fashion & Beauty</option>
+                <option value="furnitureAndDecor">Furniture & Decor</option>
+                <option value="books">Books</option>
+                <option value="sportsAndHobbies">Sports & Hobbies</option>
+                <option value="healthAndWellness">Health & Wellness</option>
+                <option value="allCategories" selected>All Categories</option>
+            </select>
+            <input type="text" placeholder="What are you looking for today ...." id="txtItems_NAV">
+        </div>
+        <button id="btnSell" onclick="openSellPage()">Sell</button>
+        <img src="" alt="" id="imgProfile" onclick="openProfilePage()">
+    </div>
     <div id="directoryPathLink">
         <h3 id="lblHome">Home</h3>
         <h3 style="font-weight: lighter;margin-left: 20px;margin-right: 20px;">/</h3>
