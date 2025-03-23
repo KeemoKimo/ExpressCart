@@ -17,14 +17,13 @@ router.post('/sellItem', async (req, res) => {
             req.body.txtPrice,
             req.body.conditions,
             req.body.txtLocation,
-            req.body.lblUserId,  // Ensure this matches the actual form field name
+            req.body.lblUserId,
             req.body.txtDescription
         ]);
 
         if (itemResult.rowCount > 0) {
             const itemID = itemResult.rows[0].id;
 
-            // Fix: Use parameterized query for image insertion
             const insertImageQuery = `INSERT INTO itemimages (url, itemid) VALUES ($1, $2)`;
             await pool.query(insertImageQuery, [defaultImageURL, itemID]);
 

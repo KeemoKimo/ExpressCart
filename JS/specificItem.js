@@ -85,25 +85,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
             });
     }
-
     function displayImages(data) {
         const images = data.images;
-
+    
         const itemImage = document.getElementById("itemImage");
-
-        itemImage.src = images.length > 0 ? images[0] : "https://res.cloudinary.com/dkgfcemw4/image/upload/v1739280006/no-photo-or-blank-image-icon.jpg";
-
-        if (images.length == 0) {
+    
+        itemImage.src = images.length > 1 ? images[1] : "https://res.cloudinary.com/dkgfcemw4/image/upload/v1742222613/49b22b6c-2664-4271-bda2-576e84661667.png";
+    
+        if (images.length <= 1) {
             document.getElementById("addMoreImageDiv").style.display = "none";
         }
-
+    
         const previewDivs = document.querySelectorAll(".imagePrev");
-
+    
+        // Start looping from images[2] instead of images[1] to avoid duplication
         for (let i = 0; i < previewDivs.length; i++) {
             const imageTag = previewDivs[i].querySelector("img");
-
-            if (images[i + 1]) {
-                imageTag.src = images[i + 1];
+    
+            if (images[i + 2]) { // Start from images[2]
+                imageTag.src = images[i + 2];
                 previewDivs[i].style.display = "block";
             } else {
                 previewDivs[i].style.display = "none";

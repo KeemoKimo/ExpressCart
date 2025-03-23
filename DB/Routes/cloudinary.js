@@ -48,6 +48,7 @@ router.post('/uploadImage', upload.single('image'), (req, res) => {
             });
         }
         else if (userName && itemID) {
+
             const uploadItemImageQuery = `INSERT INTO itemimages (url, itemid)
                                         VALUES($1, $2)`;
             const values = [result.secure_url, itemID];
