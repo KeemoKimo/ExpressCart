@@ -16,11 +16,13 @@
 
         function showModal() {
             document.getElementById("editItemModal").style.display = "block";
+            document.getElementById("navBar").style.display = "none";
         }
 
         window.onclick = function (event) {
             if (event.target == document.getElementById("editItemModal")) {
                 document.getElementById("editItemModal").style.display = "none";
+                document.getElementById("navBar").style.display = "flex";
             }
         }
 

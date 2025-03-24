@@ -6,17 +6,29 @@
     <title>Sell Item</title>
     <link rel="stylesheet" href="/ExpressCart/CSS/general.css">
     <link rel="stylesheet" href="/ExpressCart/CSS/addItemPage.css">
+    <link rel="stylesheet" href="/ExpressCart/CSS/navBar.css">
     <script src="../DB/APIroutes.js"></script>
+    <script src="/JS/navBarFunctions.js"></script>
+    <script src="/JS/itemTile.js"></script>
+    <script src="/JS/specificItem.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const urlParams = new URLSearchParams(window.location.search);
             const userName = urlParams.get('userName');
             if (userName) {
+
+                fetch(`api/getUserData?userName=${encodeURIComponent(userName)}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("imgProfile").src = data.profileimg;
+                });
+
                 fetch(`api//getUserData?userName=${userName}`)
                     .then(response => response.json())
                     .then(data => {
                         const userIdContainer = document.getElementById('lblUserId');
-                        userIdContainer.value = data.id;  
+                        userIdContainer.value = data.id;
                         const userNameContainer = document.getElementById('lblUserName');
                         userNameContainer.value = data.username;
                     })
@@ -27,11 +39,33 @@
 </head>
 
 <body>
+    <div id="navBar">
+        <h1 id="lblLogo_NAV">expressCart.</h1>
+        <div id="searchContainer">
+            <select name="categories" id="cmbCategories_NAV">
+                <option value="Cars & Vehicles">Cars & Vehicles</option>
+                <option value="Phones & Tablets">Phones & Tablets</option>
+                <option value="Computers & Accessories">Computers & Accessories</option>
+                <option value="Electronics & Appliances">Electronics & Appliances</option>
+                <option value="Real Estate">Real Estate</option>
+                <option value="Fashion & Beauty">Fashion & Beauty</option>
+                <option value="Furniture & Decor">Furniture & Decor</option>
+                <option value="Books">Books</option>
+                <option value="Sports & Hobbies">Sports & Hobbies</option>
+                <option value="Health & Wellness">Health & Wellness</option>
+                <option value="All Categories" selected>All Categories</option>
+            </select>
+            <input type="text" placeholder="What are you looking for today ...." id="txtItems_NAV">
+        </div>
+        <button id="btnSell" onclick="openSellPage()">Sell</button>
+        <img src="" alt="" id="imgProfile" onclick="openProfilePage()">
+    </div>
     <form action="/api/sellItem" id="frmSellItem" method="post">
         <input type="hidden" name="lblUserId" id="lblUserId">
         <input type="hidden" name="lblUserName" id="lblUserName">
         <input type="text" id="txtName" name="txtName" placeholder="Enter item name ..." class="txtField" required><br>
-        <input type="text" id="txtLocation" name="txtLocation" placeholder="Enter item location ..." class="txtField" required><br>
+        <input type="text" id="txtLocation" name="txtLocation" placeholder="Enter item location ..." class="txtField"
+            required><br>
         <input type="number" id="txtPrice" name="txtPrice" placeholder="Enter selling price ..." min="0.00" step="0.01"
             class="txtField" required>
         <label for="txtPrice" id="lblPrice" class="labelStyle">CAD $</label><br>
