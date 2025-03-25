@@ -352,6 +352,7 @@
     color: white;
     border-radius: 10px;
     font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 #btnViewAll:hover {
@@ -359,4 +360,27 @@
     opacity: 0.9;
     transform: scale(1.01);
     transition: 0.5s;
+}
+
+#btnContactUser_Wrapper{
+    display: grid;
+    place-items: center;
+}
+
+#btnContactUser{
+    margin-top: 10px;
+    background-color: rgb(0, 102, 255);
+    color: white;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: none;
+}
+
+#btnContactUser:hover{
+    cursor: pointer;
+    transform: scale(1.04);
+    transition: 0.3s;
 }

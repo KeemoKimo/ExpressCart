@@ -78,3 +78,21 @@
     transition: 0.5s;
 }
 
+#btnViewYourItems{
+    width: 90%;
+    height: 50px;
+    margin: 0 auto;
+    border: none;
+    background-color: rgb(25, 194, 25);
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+#btnViewYourItems:hover{
+    cursor: pointer;
+    opacity: 0.9;
+    transform: scale(1.01);
+    transition: 0.5s;
+}

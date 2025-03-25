@@ -58,6 +58,21 @@
                 }
             });
 
+            document.getElementById("btnContactUser").addEventListener("click", function(){
+                let contactEmail = document.getElementById("lblOwnerEmail").innerText;
+                let itemName = document.getElementById("lblItemTitle").innerText;
+                let itemID = document.getElementById("lblItemId").innerText;
+
+                itemID = itemID.replace("Item Id : ", "");
+
+
+                let subject = `Inquiry about Item #${itemID} - ${itemName}`;
+                let body = `Hello, \n\n I am interested in Item #${itemID} - ${itemName} that you posted! \n\n Can you tell me more about it?`;
+                
+
+                window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            });
+
             document.getElementById("btnDeletePost").addEventListener("click", function () {
                 if (!confirm("Are you sure you want to delete this post?")) return;
 
@@ -167,6 +182,9 @@
             <h3 id="lblOwnerName"></h3>
             <p id="lblOwnerEmail"></p>
             <p id="lblOwnerDateJoined"></p>
+            <div id="btnContactUser_Wrapper">
+                <button id="btnContactUser">Contact Seller</button>
+            </div>
         </div>
     </div>
     <button id="btnEditPost" onclick="showModal()">Edit Post</button>

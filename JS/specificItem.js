@@ -14,8 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     const btnDelete = document.getElementById("btnDeletePost");
                     btnDelete.style.display = "block";
 
-                    // if(data.image_urls)
-
                     const btnAddImage = document.getElementById("btnAddImage");
                     if (data.images.length == 6) {
                         btnAddImage.style.display = "none";
@@ -23,6 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         btnAddImage.style.display = "block";
                     }
 
+                }else{
+                    const btnContact = document.getElementById("btnContactUser");
+                    btnContact.style.display = "block";
                 }
 
 

@@ -23,6 +23,10 @@
             fetchItems(urlParams, 5);
             fetchAllItems(25);
 
+            document.getElementById("btnViewYourItems").addEventListener("click", function(){
+                window.location.href = `yourPostedItems.html?userName=${urlParams}`;
+            });
+
             document.getElementById("frmUploadImage").action = `/api/uploadImage?userName=${urlParams}`;
         });
     </script>
@@ -100,7 +104,9 @@
     <h1 id="lblYourItems">Your Items</h1>
     <div class="itemContainer" id="yourItemsContainer">
     </div>
-
+    <div id="bottomButtonWrapper">
+        <button id="btnViewYourItems"">View All Your Items</button>
+    </div>
     <div id="divider">
     </div>
     <h1 id="lblAllListedItems">All Listed Items Items</h1>

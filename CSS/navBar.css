@@ -43,6 +43,7 @@
     color: white;
     border-radius: 5px;
     font-size: 18px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 #btnSell:hover {
@@ -63,6 +64,8 @@
     background-color: #f8f7f7;
     border-radius: 50%;
     object-fit: cover;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 #imgProfile:hover{
