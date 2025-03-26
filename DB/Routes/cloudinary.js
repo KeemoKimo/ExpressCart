@@ -4,6 +4,7 @@ require("dotenv").config({
 const cloudinary = require('cloudinary').v2;
 const express = require('express');
 const router = express.Router();
+const sharp = require('sharp');
 const multer = require('multer');
 const pool = require('../pool');
 
@@ -17,7 +18,7 @@ cloudinary.config({
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-router.post('/uploadImage', upload.single('image'), (req, res) => {
+router.post('/uploadImage', upload.single('image'), async (req, res) => {
 
     const userName = req.query.userName?.split("=")[1] || req.query.userName;
     const itemID = req.query.itemID;
@@ -25,6 +26,22 @@ router.post('/uploadImage', upload.single('image'), (req, res) => {
     if (!req.file) {
         return res.status(400).json({ error: 'No file uploaded' });
     }
+
+    const image = sharp(req.file.buffer);
+    const metadata = await image.metadata();
+    let compressedImageBuffer;
+    if (metadata.format === 'png') {
+        compressedImageBuffer = await image
+            .resize({ width: 800 }) 
+            .png({ compressionLevel: 8 })
+            .toBuffer();
+    } else {
+        compressedImageBuffer = await image
+            .resize({ width: 800 })
+            .jpeg({ quality: 70 })
+            .toBuffer();
+    }
+
 
     cloudinary.uploader.upload_stream({ resource_type: 'auto' }, (error, result) => {
         if (error) {
@@ -65,7 +82,7 @@ router.post('/uploadImage', upload.single('image'), (req, res) => {
             });
         }
 
-    }).end(req.file.buffer);
+    }).end(compressedImageBuffer);
 });
 
 module.exports = router;

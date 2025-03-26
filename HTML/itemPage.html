@@ -58,7 +58,7 @@
                 }
             });
 
-            document.getElementById("btnContactUser").addEventListener("click", function(){
+            document.getElementById("btnContactUser").addEventListener("click", function () {
                 let contactEmail = document.getElementById("lblOwnerEmail").innerText;
                 let itemName = document.getElementById("lblItemTitle").innerText;
                 let itemID = document.getElementById("lblItemId").innerText;
@@ -68,7 +68,7 @@
 
                 let subject = `Inquiry about Item #${itemID} - ${itemName}`;
                 let body = `Hello, \n\n I am interested in Item #${itemID} - ${itemName} that you posted! \n\n Can you tell me more about it?`;
-                
+
 
                 window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             });
@@ -98,6 +98,7 @@
 
 
     </script>
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 
 <body>
@@ -234,6 +235,15 @@
     <div id="bottomButtonWrapper">
         <button id="btnViewAll" onclick="openAllPostPage()">View All Items</button>
     </div>
+    <form id="payment-form">
+        <div id="card-element">
+            <!-- A Stripe Element will be inserted here. -->
+        </div>
+
+        <div id="card-errors" role="alert"></div>
+
+        <button id="submit">Pay</button>
+    </form>
 </body>
 <footer>
     <h2><b>Express Cart</b> developed and maintained by Bunthong Kong ©</h2>
