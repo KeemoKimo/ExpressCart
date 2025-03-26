@@ -59,6 +59,7 @@ router.get('/getItemData', async (req, res) => {
             return res.status(404).json({ message: "No items found" });
         }
 
+
         res.json(result.rows);
     } catch (error) {
         console.error("Error fetching items:", error);

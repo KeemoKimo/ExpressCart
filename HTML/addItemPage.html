@@ -19,10 +19,10 @@
             if (userName) {
 
                 fetch(`api/getUserData?userName=${encodeURIComponent(userName)}`)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById("imgProfile").src = data.profileimg;
-                });
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById("imgProfile").src = data.profileimg;
+                    });
 
                 fetch(`api//getUserData?userName=${userName}`)
                     .then(response => response.json())

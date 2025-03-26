@@ -13,8 +13,10 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
 
+                const yourItemsContainer = document.getElementById('yourItemsContainer');
+                const allItemContainer = document.getElementById('allItemContainer');
+ 
                 if (limit === 5) {
-                    const yourItemsContainer = document.getElementById('yourItemsContainer');
                     yourItemsContainer.innerHTML = "";
 
                     data.slice(0, limit).forEach(item => {
@@ -23,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 else {
-                    const allItemContainer = document.getElementById('allItemContainer');
                     allItemContainer.innerHTML = "";
                     let largeItemHolder;
                     data.slice(0, limit).forEach((item, index) => {
