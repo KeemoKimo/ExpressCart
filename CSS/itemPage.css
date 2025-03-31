@@ -343,6 +343,28 @@
     text-align: center;
 }
 
+#btnMarkAsSold{
+    display: none;
+    margin-left: 10%;
+    width: 58.5%;
+    height: 50px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(68, 0, 255);
+    font-size: 20px;
+    border: none;
+    margin-bottom: 50px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+#btnMarkAsSold:hover{
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: 0.5s;
+}
+
 #btnViewAll {
     width: 90%;
     height: 50px;
@@ -369,7 +391,7 @@
 
 #btnContactUser{
     margin-top: 10px;
-    background-color: rgb(0, 102, 255);
+    background-color: rgb(68, 0, 255);
     color: white;
     width: 150px;
     height: 40px;

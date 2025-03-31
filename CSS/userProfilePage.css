@@ -112,8 +112,8 @@ body {
     border-radius: 15px;
 }
 
-#btnViewCart {
-    background-color: rgb(8, 169, 8);
+#btnSoldItems {
+    background-color: rgb(68, 0, 255);
     color: white;
     margin-top: 30px;
 }
@@ -129,6 +129,6 @@ body {
 }
 
 #btnViewYourItems {
-    background-color: rgb(68, 0, 255);
+    background-color: rgb(8, 169, 8);
     color: white;
 }

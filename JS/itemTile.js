@@ -40,6 +40,40 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => console.error('Error:', error));
     }
 
+    //For sold items, replace with horiontal bars later
+
+    function fetchSoldItems(userName, limit) {
+        fetch(`api/getItemData?userName=${encodeURIComponent(userName)}&viewAsSold=True`)
+            .then(response => response.json())
+            .then(data => {
+
+                const yourItemsContainer = document.getElementById('yourItemsContainer');
+                const allItemContainer = document.getElementById('allItemContainer');
+ 
+                if (limit === 5) {
+                    yourItemsContainer.innerHTML = "";
+
+                    data.slice(0, limit).forEach(item => {
+                        yourItemsContainer.innerHTML += createItemTile(item);
+                    });
+                }
+
+                else {
+                    allItemContainer.innerHTML = "";
+                    let largeItemHolder;
+                    data.slice(0, limit).forEach((item, index) => {
+                        if (index % 5 === 0) {
+                            largeItemHolder = document.createElement('div');
+                            largeItemHolder.classList.add('fullWidthContainer');
+                            allItemContainer.appendChild(largeItemHolder);
+                        }
+                        largeItemHolder.innerHTML += createItemTile(item);
+                    });
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
     function fetchAllItems(amount) {
         fetch(`api/getItemData`)
             .then(response => response.json())
@@ -138,5 +172,6 @@ document.addEventListener('DOMContentLoaded', function () {
     window.fetchRelatedItems = fetchRelatedItems;
     window.fetchAllItems = fetchAllItems;
     window.fetchSpecificCategory = fetchSpecificCategory;
+    window.fetchSoldItems = fetchSoldItems;
 
 });

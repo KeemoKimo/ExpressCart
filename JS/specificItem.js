@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     const btnDelete = document.getElementById("btnDeletePost");
                     btnDelete.style.display = "block";
 
+                    const btnMarkAsSold = document.getElementById("btnMarkAsSold");
+                    btnMarkAsSold.style.display = "block";
+
                     const btnAddImage = document.getElementById("btnAddImage");
                     if (data.images.length == 6) {
                         btnAddImage.style.display = "none";

@@ -7,6 +7,7 @@ router.get('/getItemData', async (req, res) => {
 
         let userName = req.query.userName;
         let category = req.query.category;
+        let viewAsSold = req.query.viewAsSold === "True";
 
         let query = `
                 SELECT items.id, 
@@ -20,12 +21,18 @@ router.get('/getItemData', async (req, res) => {
                 LEFT JOIN itemimages ON items.id = itemimages.itemid
         `;
 
-        if(category){
+        if (category) {
             category = decodeURIComponent(category);
         }
 
         let params = [];
         let conditions = [];
+
+        if (viewAsSold) {
+            conditions.push(`items.is_sold = TRUE`);
+        } else {
+            conditions.push(`items.is_sold = FALSE`);
+        }
 
         if (userName) {
             let userIdQuery = `SELECT * FROM users WHERE username = $1`;
@@ -41,7 +48,7 @@ router.get('/getItemData', async (req, res) => {
             params.push(userId);
         }
 
-        if(category && category !== "All Categories"){
+        if (category && category !== "All Categories") {
             conditions.push(`items.category = $${params.length + 1}`);
             params.push(category);
         }

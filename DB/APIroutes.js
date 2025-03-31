@@ -54,6 +54,7 @@ const getSpecificItemData = require('../DB/Routes/getSpecificItemData');
 const updateItemInfo = require('../DB/Routes/updateItemData');
 const relatedPost = require('../DB/Routes/relatedPost');
 const deletePost = require('../DB/Routes/deletePost');
+const markAsSold = require('../DB/Routes/markAsSold');
 
 // Use routes
 app.use('/api', signUpRoute);
@@ -68,6 +69,7 @@ app.use('/api', getSpecificItemData);
 app.use('/api', updateItemInfo);
 app.use('/api', relatedPost);
 app.use('/api', deletePost);
+app.use('/api', markAsSold);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

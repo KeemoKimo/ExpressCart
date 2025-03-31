@@ -5,6 +5,7 @@ const pool = require('../pool');
 router.get('/getUserItemsData', async (req, res) => {
 
     let userName = req.query.userName;
+    let viewAsSold = req.query.viewAsSold === "True"; 
 
     if (!userName) {
         return res.status(400).json({ message: "Missing userName parameter" });
@@ -30,6 +31,11 @@ router.get('/getUserItemsData', async (req, res) => {
 
         itemsQuery += ` WHERE items.ownerid = $1`;
 
+        if(viewAsSold){
+            totalValueQuery += ` AND is_sold = TRUE`;
+            totalItemsQuery += ` AND is_sold = TRUE`;
+            itemsQuery += ` AND is_sold = TRUE`;
+        }
 
         const [totalValueResult, totalItemsResult, itemsResult] = await Promise.all([
             pool.query(totalValueQuery, [userId]),
