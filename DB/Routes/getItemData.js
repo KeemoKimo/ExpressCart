@@ -16,6 +16,7 @@ router.get('/getItemData', async (req, res) => {
                 items.price, 
                 items.condition, 
                 items.dateposted, 
+                items.solddate,
                 STRING_AGG(itemimages.url, ',' ORDER BY itemimages.id) AS image_urls
                 FROM items
                 LEFT JOIN itemimages ON items.id = itemimages.itemid

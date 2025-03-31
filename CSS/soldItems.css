@@ -1,0 +1,68 @@
+
+#lblTotalItems{
+    font-size: 20px;
+}
+
+#lblTotalValue{
+    font-size: 20px;
+}
+
+#spanPrice{
+    color: green;
+}
+
+.labelStyle{
+    text-align: center;
+}
+
+#SoldItemsContainer{
+    width: 90%;
+    height: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin: 50px auto;
+    background-color: red;
+}
+
+.individualSoldItems{
+    width: 90%;
+    height: 250px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    background-color: white;
+    margin-bottom: 50px;
+}
+
+#imageCover{
+    width: 25%;
+    height: 250px;
+    border-radius: 10px 0 0 10px;
+}
+
+#imageCover img{
+    object-fit: cover;
+    width: 100%;
+    height: 250px;
+    border-radius: 10px 0 0 10px;
+}
+
+#infoDiv{
+    width: 60%;
+    height: 250px;
+    padding-left: 5%;
+}
+
+#lblPrice{
+    font-weight: bold;
+    font-size: 19px;
+    color: green;
+}
+
+#soldDiv{
+    width: 15%;
+    height: 250px;
+    background-color: #cccbcb;
+    border-radius: 0 10px 10px 0;
+}

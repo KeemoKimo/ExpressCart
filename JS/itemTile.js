@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const yourItemsContainer = document.getElementById('yourItemsContainer');
                 const allItemContainer = document.getElementById('allItemContainer');
- 
+
                 if (limit === 5) {
                     yourItemsContainer.innerHTML = "";
 
@@ -47,29 +47,19 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
 
-                const yourItemsContainer = document.getElementById('yourItemsContainer');
-                const allItemContainer = document.getElementById('allItemContainer');
- 
-                if (limit === 5) {
-                    yourItemsContainer.innerHTML = "";
+                const soldItemContainer = document.getElementById('SoldItemsContainer');
 
-                    data.slice(0, limit).forEach(item => {
-                        yourItemsContainer.innerHTML += createItemTile(item);
-                    });
-                }
+                soldItemContainer.innerHTML = "";
+                let largeItemHolder;
+                data.slice(0, limit).forEach((item, index) => {
+                    if (index % 5 === 0) {
+                        largeItemHolder = document.createElement('div');
+                        largeItemHolder.classList.add('fullWidthContainer');
+                        soldItemContainer.appendChild(largeItemHolder);
+                    }
+                    soldItemContainer.innerHTML += createSoldItemTile(item);
+                });
 
-                else {
-                    allItemContainer.innerHTML = "";
-                    let largeItemHolder;
-                    data.slice(0, limit).forEach((item, index) => {
-                        if (index % 5 === 0) {
-                            largeItemHolder = document.createElement('div');
-                            largeItemHolder.classList.add('fullWidthContainer');
-                            allItemContainer.appendChild(largeItemHolder);
-                        }
-                        largeItemHolder.innerHTML += createItemTile(item);
-                    });
-                }
             })
             .catch(error => console.error('Error:', error));
     }
@@ -163,6 +153,36 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         `;
     }
+
+    function createSoldItemTile(data) {
+        const defaultNoImage = "https://res.cloudinary.com/dkgfcemw4/image/upload/v1742222613/49b22b6c-2664-4271-bda2-576e84661667.png";
+
+        const imageUrls = data.image_urls ? data.image_urls.split(',') : [];
+
+        const validImages = imageUrls.filter(url => url.trim() !== defaultNoImage);
+
+        const imageUrl = validImages.length > 0 ? validImages[0] : defaultNoImage;
+
+        return `
+            <div class="individualSoldItems">
+                <div id="imageCover">
+                    <img src="${imageUrl}" alt="">
+                </div>
+                <div id="infoDiv">
+                    <h2 style="margin-top: 35px;">${data.name}</h2>
+                    <p id="lblPrice"><i>$${Number(data.price).toLocaleString()} CAD</i></p>
+                    <p id="lblLocation">Location : ${data.location}</p>
+                    <p id="lblDatePosted">Date Posted : ${new Date(data.dateposted).toLocaleDateString('en-GB')}</p>
+                </div>
+                <div id="soldDiv">
+                    <h2 style="margin-top: 35%; margin-left: 45px;">SOLD DATE</h2>
+                    <p style="margin-left: 70px;">${new Date(data.solddate).toLocaleDateString('en-GB')}</p>
+                </div>
+            </div>
+        `;
+    }
+
+
 
     if (userName) {
         fetchUserItem(userName);

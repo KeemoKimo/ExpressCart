@@ -6,7 +6,7 @@
     <title>Sold Items</title>
     <link rel="stylesheet" href="/ExpressCart/CSS/general.css">
     <link rel="stylesheet" href="/ExpressCart/CSS/navBar.css">
-    <link rel="stylesheet" href="/ExpressCart/CSS/myCart.css">
+    <link rel="stylesheet" href="/ExpressCart/CSS/soldItems.css">
     <script src="/JS/itemTile.js"></script>
     <script src="/JS/navBarFunctions.js"></script>
     <script>
@@ -26,7 +26,7 @@
                     labelTotalItem.innerHTML = `Items you've sold: <span id="spanPrice"><b>${data.totalItems}</b></span>`;
 
                     const labelTotalValue = document.getElementById("lblTotalValue");
-                    labelTotalValue.innerHTML = `Sold Items values : <span id="spanPrice"><b>$${Number(data.totalValue).toLocaleString()} CAD</b></span>`;
+                    labelTotalValue.innerHTML = `Total Revenue : <span id="spanPrice"><b>$${Number(data.totalValue).toLocaleString()} CAD</b></span>`;
                 });
 
                 fetchSoldItems(userName, 100);
@@ -60,7 +60,8 @@
     <p id="lblTotalItems" class="labelStyle"></p>
     <p id="lblTotalValue" class="labelStyle"></p>
     <div id="divider"></div>
-    <div id="allItemContainer">
+    <div id="SoldItemsContainer">
+        
     </div>
 </body>
 

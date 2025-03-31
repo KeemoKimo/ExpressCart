@@ -37,6 +37,12 @@ router.get('/getUserItemsData', async (req, res) => {
             itemsQuery += ` AND is_sold = TRUE`;
         }
 
+        else{
+            totalValueQuery += ` AND is_sold = FALSE`;
+            totalItemsQuery += ` AND is_sold = FALSE`;
+            itemsQuery += ` AND is_sold = FALSE`;
+        }
+
         const [totalValueResult, totalItemsResult, itemsResult] = await Promise.all([
             pool.query(totalValueQuery, [userId]),
             pool.query(totalItemsQuery, [userId]),
