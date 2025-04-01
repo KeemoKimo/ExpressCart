@@ -33,12 +33,12 @@ router.post('/uploadImage', upload.single('image'), async (req, res) => {
     if (metadata.format === 'png') {
         compressedImageBuffer = await image
             .resize({ width: 800 }) 
-            .png({ compressionLevel: 8 })
+            .png({ compressionLevel: 2 })
             .toBuffer();
     } else {
         compressedImageBuffer = await image
             .resize({ width: 800 })
-            .jpeg({ quality: 70 })
+            .jpeg({ quality: 95 })
             .toBuffer();
     }
 

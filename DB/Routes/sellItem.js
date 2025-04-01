@@ -4,7 +4,7 @@ const pool = require('../pool');
 
 router.post('/sellItem', async (req, res) => {
     try {
-        const defaultImageURL = 'https://res.cloudinary.com/dkgfcemw4/image/upload/v1742222613/49b22b6c-2664-4271-bda2-576e84661667.png';
+        const defaultImageURL = 'https://res-console.cloudinary.com/dkgfcemw4/thumbnails/v1/image/upload/v1743509390/Tm8tSW1hZ2UtUGxhY2Vob2xkZXIuc3ZnX3ZxMnVpbg==/drilldown';
 
         const insertItemQuery = `
             INSERT INTO items (name, category, price, condition, location, ownerId, description) 

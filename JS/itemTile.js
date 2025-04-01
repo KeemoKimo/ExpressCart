@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function createItemTile(data) {
-        const defaultNoImage = "https://res.cloudinary.com/dkgfcemw4/image/upload/v1742222613/49b22b6c-2664-4271-bda2-576e84661667.png";
+        const defaultNoImage = "https://res-console.cloudinary.com/dkgfcemw4/thumbnails/v1/image/upload/v1743509390/Tm8tSW1hZ2UtUGxhY2Vob2xkZXIuc3ZnX3ZxMnVpbg==/drilldown";
 
         const imageUrls = data.image_urls ? data.image_urls.split(',') : [];
 
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function createSoldItemTile(data) {
-        const defaultNoImage = "https://res.cloudinary.com/dkgfcemw4/image/upload/v1742222613/49b22b6c-2664-4271-bda2-576e84661667.png";
+        const defaultNoImage = "https://res-console.cloudinary.com/dkgfcemw4/thumbnails/v1/image/upload/v1743509390/Tm8tSW1hZ2UtUGxhY2Vob2xkZXIuc3ZnX3ZxMnVpbg==/drilldown";
 
         const imageUrls = data.image_urls ? data.image_urls.split(',') : [];
 
